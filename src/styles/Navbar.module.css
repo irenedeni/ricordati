@@ -1,0 +1,9 @@
+.nav {
+  width: 100%;
+  padding: 2rem 2.5rem;
+}
+
+.logo {
+  width: 130px;
+  max-width: 130px;
+}

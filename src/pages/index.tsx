@@ -16,7 +16,7 @@ export default function Home() {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <Layout className={styles.layout}>
-        <div className={styles.description}>ciao</div>
+        <div>ciao</div>
       </Layout>
     </>
   )
