@@ -21,6 +21,7 @@
     rgba(255, 255, 255, 1),
     rgba(255, 255, 255, 0)
   );
+  --primary: #FDF3E8;
 
   --tile-start-rgb: 239, 245, 249;
   --tile-end-rgb: 228, 232, 233;
@@ -87,12 +88,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--primary);
 }
 
 a {
