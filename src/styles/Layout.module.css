@@ -1,0 +1,20 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3.5rem 2rem;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: auto;
+}
+
+.description {
+  display: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+  font-size: 0.85rem;
+  width: 100%;
+  z-index: 2;
+  font-family: var(--font-mono);
+}
