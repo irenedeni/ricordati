@@ -1,0 +1,41 @@
+.tabs {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius-m);
+  background-color: var(--bg-grey);
+  position: relative;
+  max-width: 800px;
+  padding: .5rem;
+}
+
+.toggle {
+  height: 42px;
+  width: 100%;
+  border-radius: var(--border-radius-m);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  padding: 8px 7px 7px 7px;
+}
+
+.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.disabled {
+  background-color: transparent;
+  color: var(--color-disabled);
+}
+
+.tabContent {
+  position: absolute;
+  top: 65px;
+  width: 100%;
+  justify-content: center;
+}

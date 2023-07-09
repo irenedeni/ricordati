@@ -1,10 +1,25 @@
 :root {
-  --max-width: 800px;
-  --border-radius-large: 40px;
-  --font-primary: 'Roboto', sans-serif;
-  --text-primary: 22, 24, 23;
-  --bg-primary: #fdf3e8;
-  --bg-white: #fff;
+  --border-radius-l: 40px;
+  --border-radius-m: 28px;
+  --border-radius-s: 8px;
+  --border-radius-xs: 4px;
+  --border-dashed: 1px dashed rgba(197, 197, 197, 1);
+  --border-input: 1px solid rgba(139, 139, 137, 0.5);
+  --font-primary: 'Graphik', 'Rubik', sans-serif;
+  --font-size-xl: 32px;
+  --font-size-l: 24px;
+  --font-size-m: 20px;
+  --font-size-s: 18px;
+  --font-size-xs: 14px;
+  --text-primary: rgba(22, 24, 23, 1);
+  --text-grey: rgba(78, 63, 55, 0.5);
+  --bg-primary: rgba(253, 243, 232, 1);
+  --bg-grey: rgba(248, 248, 248, 1); 
+  --color-primary: rgba(244, 127, 118, 1);
+  --color-secondary: rgba(253, 243, 232, 1);
+  --color-white: rgba(255, 255, 255, 1);
+  --color-disabled: rgba(68, 35, 69, 0.3);
+  --button-primary: rgba(68, 35, 69, 1);
 }
 
 * {
@@ -21,13 +36,14 @@ body {
 }
 
 body {
-  color: rgb(var(--text-primary));
+  color: var(--text-primary);
   background: var(--bg-primary);
   font-family: var(--font-primary);
   width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  letter-spacing: -.1px;
 }
 
 a {

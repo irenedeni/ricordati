@@ -3,13 +3,12 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 3.5rem 2.5rem;
-  max-width: var(--max-width);
+  padding: 1.5rem;
   width: 100%;
   margin: auto;
   height: 100%;
-  border-top-right-radius: var(--border-radius-large);
-  border-top-left-radius: var(--border-radius-large);
-  background-color: var(--bg-white);
+  border-top-right-radius: var(--border-radius-l);
+  border-top-left-radius: var(--border-radius-l);
+  background-color: var(--color-white);
 }
 
