@@ -14,7 +14,7 @@ type Props = {
   className?: string
 }
 
-const Layout = ({ children, className }: Props): JSX.Element => {
+const Layout = ({ children, className }: Props): React.JSX.Element => {
   return (
     <>
       <Navbar />

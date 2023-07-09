@@ -13,7 +13,7 @@ type Props = {
 	children?: React.ReactNode
 }
 
-const Tab = ({ title, active, onClick, children }: Props): JSX.Element => {
+const Tab = ({ title, active, onClick, children }: Props): React.JSX.Element => {
 	
 	return (
 		<>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styles from '@/styles/Tabs.module.css'
 import Tab from './Tab'
 
-const Toggle = (): JSX.Element => {
+const Toggle = (): React.JSX.Element => {
 	const [isActive, setIsActive] = useState(true)
 
 	const pageContent = [

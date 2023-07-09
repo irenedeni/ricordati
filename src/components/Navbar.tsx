@@ -8,7 +8,7 @@ const variants = {
   exit: { opacity: 0, x: 0, y: 0 },
 }
 
-const Navbar = (): JSX.Element => {
+const Navbar = (): React.JSX.Element => {
   const router = useRouter()
   return (
     <motion.nav
