@@ -1,11 +1,15 @@
 import Head from 'next/head'
 import { Layout, Tabs } from '@/components/index'
-import prisma from '../lib/prisma'
-import { GetStaticProps } from 'next/types'
+import { GetStaticProps } from 'next'
+import { getItems } from '../lib/prisma'
 
 type Item = {
+  id?: string
   name: string
   person: string
+  ownedByMe: boolean
+  createdAt: Date | string
+  updatedAt?: Date | string
 }
 
 type TabItems = {
@@ -13,7 +17,7 @@ type TabItems = {
   borrowed: Item[]
 }
 
-export default function Home(items: TabItems) {
+export default function Home({ lent, borrowed }: TabItems) {
   return (
     <>
       <Head>
@@ -23,37 +27,47 @@ export default function Home(items: TabItems) {
           content="Ricordati - an app to track lended and borrowed items"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <Layout>
-        <Tabs tabs={items} />
+        <Tabs tabs={{ lent, borrowed }} />
       </Layout>
     </>
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const lent = await prisma.item.findMany({
-    where: { ownedByMe: true },
-    orderBy: { createdAt: 'desc' },
-  })
-  const borrowed = await prisma.item.findMany({
-    where: { ownedByMe: false },
-    orderBy: { createdAt: 'desc' },
-  })
+const formattedItem = (item: Item) => ({
+  id: item.id,
+  name: item.name,
+  createdAt: item.createdAt.toString(),
+  person: item.person,
+  ownedByMe: item.ownedByMe,
+  updatedAt: item.updatedAt ? item.updatedAt.toString() : undefined,
+})
 
-  const formattedLentItems: Item[] = lent.map((item) => ({
-    name: item.name,
-    createdAt: item.createdAt.toISOString(),
-    ownedByMe: item.ownedByMe,
-    person: item.person,
-  }))
-  const formattedBorrowedItems: Item[] = borrowed.map((item) => ({
-    name: item.name,
-    createdAt: item.createdAt.toISOString(),
-    ownedByMe: item.ownedByMe,
-    person: item.person,
-  }))
+// const findItems = async (ownedByMe: boolean): Promise<Item[]> => {
+  // try {
+  //   const items: Item[] = await prisma.item.findMany({
+  //     where: { ownedByMe },
+  //     orderBy: { createdAt: 'desc' },
+  //   })
+  //   console.log('Returned items from Prisma:', items)
+  //   return items
+  // } catch (error) {
+  //   console.error('Error retrieving items from Prisma:', error)
+  //   return []
+  // }
+// }
+
+export const getStaticProps: GetStaticProps<TabItems> = async () => {
+  const lent: Item[] = await getItems(true)
+  const borrowed: Item[] = await getItems(false)
+
+  const formattedLentItems: Item[] = lent.map((item: Item) =>
+    formattedItem(item)
+  )
+  const formattedBorrowedItems: Item[] = borrowed.map((item: Item) =>
+    formattedItem(item)
+  )
 
   return {
     props: {

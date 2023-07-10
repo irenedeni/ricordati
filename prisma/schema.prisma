@@ -1,3 +1,5 @@
+// Any changes to this are applied with `npx prisma migrate dev`
+
 generator client {
   provider = "prisma-client-js"
   previewFeatures = ["jsonProtocol"]
@@ -13,9 +15,8 @@ datasource db {
 model Item {
   id String @default(cuid()) @id
   name String
-  person String @unique
+  person String 
   ownedByMe Boolean @default(false)
-  createdAt DateTime @default(now()) @map(name: "created_at")
-  updatedAt DateTime @updatedAt @map(name: "updated_at")
-  @@map(name: "items")
+  createdAt DateTime @default(now()) 
+  updatedAt DateTime @updatedAt
 }
