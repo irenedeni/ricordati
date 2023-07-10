@@ -2,42 +2,46 @@ import { useState } from 'react'
 import styles from '@/styles/Tabs.module.css'
 import Tab from './Tab'
 
-const Toggle = (): React.JSX.Element => {
-	const [isActive, setIsActive] = useState(true)
+type TabItem = {
+  name: string
+  person: string
+}
 
-	const pageContent = [
-		{
-			title: 'Borrowed',
-			content: 'List of Borrowed Items'
-		},
-		{
-			title: 'Lent',
-			content: 'List of Lent Items'
-		}
-	]
+type TabsItems = {
+  tabs: {
+    lent: TabItem[]
+    borrowed: TabItem[]
+  }
+}
 
-	const handleTabClick = () => {
+const Tabs = (tabs: TabsItems): React.JSX.Element => {
+  const { lent, borrowed } = tabs.tabs
+  const [isActive, setIsActive] = useState(true)
+
+  const handleTabClick = () => {
     setIsActive(!isActive)
   }
 
-	return (
-		<div className={styles.tabs}>
-			<Tab
-				title={pageContent[0].title} 
-        active={isActive} 
-        onClick={handleTabClick}
-      >
-        {pageContent[0].content}
+  return (
+    <div className={styles.tabs}>
+      <Tab title="Borrowed" active={isActive} onClick={handleTabClick}>
+        {borrowed.map((item) => (
+          <div key={item.name}>
+            <p>{item.name}</p>
+            <p>{item.person}</p>
+          </div>
+        ))}
       </Tab>
-			<Tab
-        title={pageContent[1].title}
-        active={!isActive}
-        onClick={handleTabClick}
-      >
-        {pageContent[1].content}
+      <Tab title="Lent out" active={!isActive} onClick={handleTabClick}>
+        {lent.map((item) => (
+          <div key={item.name}>
+            <p>{item.name}</p>
+            <p>{item.person}</p>
+          </div>
+        ))}
       </Tab>
-		</div>
-	)
+    </div>
+  )
 }
 
-export default Toggle
+export default Tabs

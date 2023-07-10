@@ -19,10 +19,10 @@ const Layout = ({ children, className }: Props): React.JSX.Element => {
     <>
       <Navbar />
       <motion.main
-        variants={variants} 
-        initial="hidden" 
-        animate="enter" 
-        exit="exit" 
+        variants={variants}
+        initial="hidden"
+        animate="enter"
+        exit="exit"
         transition={{ type: 'linear' }}
         className={`${styles.layout} ${className}`}
       >

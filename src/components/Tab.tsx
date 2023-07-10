@@ -7,35 +7,44 @@ const variants = {
 }
 
 type Props = {
-	title: string
-	active?: boolean
-	onClick?: () => void
-	children?: React.ReactNode
+  title: string
+  active?: boolean
+  onClick?: () => void
+  children?: React.ReactNode
 }
 
-const Tab = ({ title, active, onClick, children }: Props): React.JSX.Element => {
-	
-	return (
-		<>
-			<div 
-				className={`${styles.toggle} ${active ? styles.active : styles.disabled}`} 
-				onClick={onClick}
-			>
-				<motion.div
-					variants={variants}
-					initial="hidden"
-					animate="enter"
-					exit="exit"
-					transition={{ type: 'linear' }}
-				>
-					{title}
-				</motion.div>
-			</div>
-			<div style={{display: active ? 'flex' : 'none'}} className={styles.tabContent}>
-				{children}
-			</div>
-		</>
-	)
+const Tab = ({
+  title,
+  active,
+  onClick,
+  children,
+}: Props): React.JSX.Element => {
+  return (
+    <>
+      <div
+        className={`${styles.toggle} ${
+          active ? styles.active : styles.disabled
+        }`}
+        onClick={onClick}
+      >
+        <motion.div
+          variants={variants}
+          initial="hidden"
+          animate="enter"
+          exit="exit"
+          transition={{ type: 'linear' }}
+        >
+          {title}
+        </motion.div>
+      </div>
+      <div
+        style={{ display: active ? 'flex' : 'none' }}
+        className={styles.tabContent}
+      >
+        {children}
+      </div>
+    </>
+  )
 }
 
 export default Tab

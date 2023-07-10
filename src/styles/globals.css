@@ -14,7 +14,7 @@
   --text-primary: rgba(22, 24, 23, 1);
   --text-grey: rgba(78, 63, 55, 0.5);
   --bg-primary: rgba(253, 243, 232, 1);
-  --bg-grey: rgba(248, 248, 248, 1); 
+  --bg-grey: rgba(248, 248, 248, 1);
   --color-primary: rgba(244, 127, 118, 1);
   --color-secondary: rgba(253, 243, 232, 1);
   --color-white: rgba(255, 255, 255, 1);
@@ -43,7 +43,7 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  letter-spacing: -.1px;
+  letter-spacing: -0.1px;
 }
 
 a {
