@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../../lib/prisma'
 
 const capitalize = (str: string) => {
-    return str.charAt(0).toUpperCase() + str.slice(1)
+  return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
 export default async function handle(
