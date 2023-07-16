@@ -13,7 +13,7 @@ type Props = {
   children?: React.ReactNode
 }
 
-const Tab = ({
+const TabToggle = ({
   title,
   active,
   onClick,
@@ -39,7 +39,7 @@ const Tab = ({
       </div>
       <div
         style={{ display: active ? 'flex' : 'none' }}
-        className={styles.tabContent}
+        className={styles.tabToggle}
       >
         {children}
       </div>
@@ -47,4 +47,4 @@ const Tab = ({
   )
 }
 
-export default Tab
+export default TabToggle

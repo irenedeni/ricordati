@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { motion } from 'framer-motion'
-import Navbar from './Navbar'
+import { Navbar } from '@/components'
 import styles from '@/styles/Layout.module.css'
 
 const variants = {
