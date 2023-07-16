@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import styles from '@/styles/Tabs.module.css'
-import { TabToggle, ItemCard, Button, TabContent } from '@/components'
+import { TabToggle, TabContent } from '@/components'
 
 type TabItem = {
   name: string
   person: string
+  id: string
 }
 
 type TabsItems = {

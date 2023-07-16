@@ -11,7 +11,7 @@ export default function Create() {
     e.preventDefault()
     try {
       const body = { name, person, ownedByMe }
-      await fetch('/api/item', {
+      await fetch('/api/item/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
@@ -25,7 +25,7 @@ export default function Create() {
   return (
     <>
       <Layout>
-        <h1>Add borrowed item</h1>
+        <h1>Add item</h1>
         <form onSubmit={submitData}>
           <input
             autoFocus

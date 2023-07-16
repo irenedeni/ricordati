@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next'
 import { getItems } from '../lib/prisma'
 
 type Item = {
-  id?: string
+  id: string
   name: string
   person: string
   createdAt: Date | string
