@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styles from '@/styles/Tabs.module.css'
-import Tab from './Tab'
+import { Tab, ItemCard, Button } from '@/components'
 
 type TabItem = {
   name: string
@@ -16,6 +16,7 @@ type TabsItems = {
 
 const Tabs = (tabs: TabsItems): React.JSX.Element => {
   const { lent, borrowed } = tabs.tabs
+  console.log(lent, borrowed)
   const [isActive, setIsActive] = useState(true)
 
   const handleTabClick = () => {
@@ -25,18 +26,18 @@ const Tabs = (tabs: TabsItems): React.JSX.Element => {
   return (
     <div className={styles.tabs}>
       <Tab title="Borrowed" active={isActive} onClick={handleTabClick}>
-        {borrowed.map((item) => (
-          <div key={item.name}>
-            <p>{item.name}</p>
-            <p>{item.person}</p>
+        {borrowed.map((item, i) => (
+          <div key={i}>
+            <ItemCard name={item.name} person={item.person} />
+            <Button text="Add item" href="/create" />
           </div>
         ))}
       </Tab>
       <Tab title="Lent out" active={!isActive} onClick={handleTabClick}>
-        {lent.map((item) => (
-          <div key={item.name}>
-            <p>{item.name}</p>
-            <p>{item.person}</p>
+        {lent.map((item, i) => (
+          <div key={i}>
+            <ItemCard name={item.name} person={item.person} />
+            <Button text="Add item" href="/create" />
           </div>
         ))}
       </Tab>

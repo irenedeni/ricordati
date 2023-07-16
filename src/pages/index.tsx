@@ -44,29 +44,15 @@ const formattedItem = (item: Item) => ({
   updatedAt: item.updatedAt ? item.updatedAt.toString() : undefined,
 })
 
-// const findItems = async (ownedByMe: boolean): Promise<Item[]> => {
-  // try {
-  //   const items: Item[] = await prisma.item.findMany({
-  //     where: { ownedByMe },
-  //     orderBy: { createdAt: 'desc' },
-  //   })
-  //   console.log('Returned items from Prisma:', items)
-  //   return items
-  // } catch (error) {
-  //   console.error('Error retrieving items from Prisma:', error)
-  //   return []
-  // }
-// }
-
 export const getStaticProps: GetStaticProps<TabItems> = async () => {
   const lent: Item[] = await getItems(true)
   const borrowed: Item[] = await getItems(false)
 
   const formattedLentItems: Item[] = lent.map((item: Item) =>
-    formattedItem(item)
+    formattedItem(item),
   )
   const formattedBorrowedItems: Item[] = borrowed.map((item: Item) =>
-    formattedItem(item)
+    formattedItem(item),
   )
 
   return {
