@@ -7,9 +7,6 @@ export default function Create() {
   const [person, setPerson] = useState('')
   const [ownedByMe, setOwnedByMe] = useState(false)
 
-  console.log('ownedByMe?', ownedByMe)
-
-
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
@@ -24,7 +21,7 @@ export default function Create() {
       console.error(error)
     }
   }
-  
+
   return (
     <>
       <Layout>
@@ -44,15 +41,17 @@ export default function Create() {
             type="text"
             value={person}
           />
-          <label htmlFor="ownership" >Owned by me:</label>
+          <label htmlFor="ownership">Owned by me:</label>
           <select
             name="ownership"
             id="ownership"
-            onChange={(e) => setOwnedByMe(e.target.value === 'true' ? true : false)}
+            onChange={(e) =>
+              setOwnedByMe(e.target.value === 'true' ? true : false)
+            }
             value={ownedByMe ? 'true' : 'false'}
           >
-            <option value='false'>No</option>
-            <option value='true'>Yes</option>
+            <option value="false">No</option>
+            <option value="true">Yes</option>
           </select>
           <input disabled={!name || !person} type="submit" value="Create" />
           <a className="back" onClick={() => Router.push('/')}>

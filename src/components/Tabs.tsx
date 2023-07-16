@@ -16,7 +16,6 @@ type TabsItems = {
 
 const Tabs = (tabs: TabsItems): React.JSX.Element => {
   const { lent, borrowed } = tabs.tabs
-  console.log(lent, borrowed)
   const [isActive, setIsActive] = useState(true)
 
   const handleTabClick = () => {
