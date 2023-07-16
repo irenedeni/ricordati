@@ -7,7 +7,6 @@ type Item = {
   id?: string
   name: string
   person: string
-  ownedByMe: boolean
   createdAt: Date | string
   updatedAt?: Date | string
 }
@@ -40,9 +39,9 @@ const formattedItem = (item: Item) => ({
   name: item.name,
   createdAt: item.createdAt.toString(),
   person: item.person,
-  ownedByMe: item.ownedByMe,
   updatedAt: item.updatedAt ? item.updatedAt.toString() : undefined,
 })
+
 
 export const getStaticProps: GetStaticProps<TabItems> = async () => {
   const lent: Item[] = await getItems(true)
