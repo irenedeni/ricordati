@@ -14,7 +14,7 @@ export const getItems = async (ownedByMe: boolean) => {
   }
 }
 
-export const getItem = async (id:string) => {
+export const getItem = async (id: string) => {
   try {
     const item = await prisma.item.findUnique({
       where: {
@@ -35,6 +35,5 @@ export const getItem = async (id:string) => {
     return null
   }
 }
-
 
 export default prisma

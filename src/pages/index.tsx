@@ -42,7 +42,6 @@ const formattedItem = (item: Item) => ({
   updatedAt: item.updatedAt ? item.updatedAt.toString() : undefined,
 })
 
-
 export const getStaticProps: GetStaticProps<TabItems> = async () => {
   const lent: Item[] = await getItems(true)
   const borrowed: Item[] = await getItems(false)

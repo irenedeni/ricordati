@@ -17,7 +17,12 @@ const TabContent = ({ items }: TabsItems): React.JSX.Element => {
       <Button text="Add item" href="/create" />
       <div className={styles.tabContent}>
         {items.map((item: TabItem, i: number) => (
-          <ItemCard name={item.name} person={item.person} id={item.id} key={i}/>
+          <ItemCard
+            name={item.name}
+            person={item.person}
+            id={item.id}
+            key={i}
+          />
         ))}
       </div>
     </div>
