@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next'
 import { getItems } from '../lib/prisma'
 
 type Item = {
-  id?: string
+  id: string
   name: string
   person: string
   createdAt: Date | string
@@ -41,7 +41,6 @@ const formattedItem = (item: Item) => ({
   person: item.person,
   updatedAt: item.updatedAt ? item.updatedAt.toString() : undefined,
 })
-
 
 export const getStaticProps: GetStaticProps<TabItems> = async () => {
   const lent: Item[] = await getItems(true)

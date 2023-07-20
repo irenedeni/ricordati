@@ -14,4 +14,26 @@ export const getItems = async (ownedByMe: boolean) => {
   }
 }
 
+export const getItem = async (id: string) => {
+  try {
+    const item = await prisma.item.findUnique({
+      where: {
+        id: String(id),
+      },
+    })
+    if (item) {
+      return {
+        ...item,
+        createdAt: item.createdAt.toString(),
+        updatedAt: item.updatedAt.toString(),
+      }
+    } else {
+      return null
+    }
+  } catch (error) {
+    console.error('Error retrieving item from Prisma:', error)
+    return null
+  }
+}
+
 export default prisma
