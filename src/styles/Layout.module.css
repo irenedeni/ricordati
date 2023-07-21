@@ -11,3 +11,9 @@
   border-top-left-radius: var(--border-radius-l);
   background-color: var(--color-white);
 }
+
+@media (max-width: 350px) {
+  .layout {
+    padding: 1.5rem 1rem;
+  }
+}

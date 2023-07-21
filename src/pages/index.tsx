@@ -1,5 +1,4 @@
 import { signOut, useSession } from 'next-auth/react'
-import { useState } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -21,7 +20,13 @@ type TabItems = {
 
 export default function Home({ lent, borrowed }: TabItems) {
   const { data: session, status } = useSession()
-  const allowedUser = 'irene.denicolo89@gmail.com'
+
+  const navProps = {
+    button: {
+      action: () => signOut(),
+      icon: '/assets/logout.png',
+    }
+  }
 
   return (
     <>
@@ -33,7 +38,7 @@ export default function Home({ lent, borrowed }: TabItems) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Layout>
+      <Layout button={navProps.button}>
         {status === 'loading' ? (
           <p>Loading...</p>
         ) : status === 'unauthenticated' ? (
@@ -41,13 +46,8 @@ export default function Home({ lent, borrowed }: TabItems) {
         ) : null}
         {session &&
         status === 'authenticated' &&
-        session?.user?.email === allowedUser ? (
-          <>
-            <button onClick={() => signOut()}>
-              <a>Log out</a>
-            </button>
+        session?.user?.email === process.env.NEXT_PUBLIC_ALLOWED_USER ? (
             <Tabs tabs={{ lent, borrowed }} />
-          </>
         ) : (
           <Link href="/api/auth/signin">Log in</Link>
         )}

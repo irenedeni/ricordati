@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ReactNode } from 'react'
 
 type Props = {
@@ -21,9 +22,7 @@ const Button = ({
     </button>
   )
   return (
-    <>
-      {href !== undefined ? <a href={href}>{Button}</a> : <div>{Button}</div>}
-    </>
+    href !== undefined ? <Link href={href}>{Button}</Link> : Button
   )
 }
 

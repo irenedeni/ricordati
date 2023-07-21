@@ -76,7 +76,7 @@ export default function Update(item: Item): React.JSX.Element {
             <option value="No">No</option>
             <option value="Yes">Yes</option>
           </select>
-          <input type="submit" value="Edit item" />
+          <input disabled={!formName || !formPerson} type="submit" value="Edit item" />
           <button onClick={() => deleteItem(id)}>Delete item</button>
         </form>
       </Layout>
