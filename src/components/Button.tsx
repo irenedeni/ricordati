@@ -1,11 +1,14 @@
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import styles from '@/styles/Button.module.css'
 
 type Props = {
   text: string
   action?: () => void
   className?: string
-  children?: ReactNode
+  fullwidth?: boolean
+  primary?: boolean
+  secondary?: boolean
+  warning?: boolean
   href?: string
 }
 
@@ -13,16 +16,31 @@ const Button = ({
   text,
   className,
   action,
-  children,
+  fullwidth,
+  primary,
+  secondary,
+  warning,
   href,
 }: Props): React.JSX.Element => {
-  const Button = (
-    <button className={className} onClick={action ?? undefined}>
+  const ButtonElement = (
+    <button
+      className={`${className} 
+        ${fullwidth && styles.fullwidth} 
+        ${primary && styles.primary} 
+        ${secondary && styles.secondary} 
+        ${warning && styles.warning}
+      `}
+      onClick={action ?? undefined}
+    >
       {text}
     </button>
   )
-  return (
-    href !== undefined ? <Link href={href}>{Button}</Link> : Button
+  return href !== undefined ? (
+    <Link href={href} style={{ width: fullwidth ? '100%' : 'auto' }}>
+      {ButtonElement}
+    </Link>
+  ) : (
+    ButtonElement
   )
 }
 

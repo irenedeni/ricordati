@@ -4,6 +4,7 @@
   --border-radius-s: 8px;
   --border-radius-xs: 4px;
   --border-dashed: 1px dashed rgba(197, 197, 197, 1);
+  --border-color-dark: rgba(22, 24, 23, 1);
   --border-input: 1px solid rgba(139, 139, 137, 0.5);
   --font-primary: 'Graphik', 'Rubik', sans-serif;
   --font-size-xl: 32px;

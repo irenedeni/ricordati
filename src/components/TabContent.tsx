@@ -9,12 +9,14 @@ type TabItem = {
 
 type TabsItems = {
   items: TabItem[]
+  itemsType?: string
 }
 
-const TabContent = ({ items }: TabsItems): React.JSX.Element => {
+
+const TabContent = ({ items, itemsType }: TabsItems): React.JSX.Element => {
   return (
     <div className={styles.tabContentContainer}>
-      <Button text="Add item" href="/create" />
+      <Button text={`Add ${itemsType} item`} href="/create" fullwidth />
       <div className={styles.tabContent}>
         {items.map((item: TabItem, i: number) => (
           <ItemCard

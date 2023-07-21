@@ -55,7 +55,7 @@
 .tabContent {
   width: 100%;
   border-radius: var(--border-radius-m);
-  margin-top: 1rem;
+  margin: 1rem auto;
 }
 
 .tabTitle {

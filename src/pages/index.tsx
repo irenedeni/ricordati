@@ -40,17 +40,15 @@ export default function Home({ lent, borrowed }: TabItems) {
       </Head>
       <Layout button={navProps.button}>
         {status === 'loading' ? (
-          <p>Loading...</p>
+          <div>Loading...</div>
         ) : status === 'unauthenticated' ? (
-          <p>Unauthenticated</p>
+          <Link href="/api/auth/signin">Log in</Link>
         ) : null}
         {session &&
         status === 'authenticated' &&
-        session?.user?.email === process.env.NEXT_PUBLIC_ALLOWED_USER ? (
+        session?.user?.email === process.env.NEXT_PUBLIC_ALLOWED_USER && (
             <Tabs tabs={{ lent, borrowed }} />
-        ) : (
-          <Link href="/api/auth/signin">Log in</Link>
-        )}
+        )} 
       </Layout>
     </>
   )

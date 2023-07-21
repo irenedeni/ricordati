@@ -39,7 +39,7 @@ const Navbar = ({ button }: NavbarProps): React.JSX.Element => {
       </Link>
       {button && (
         <div onClick={button?.action}>
-          {button?.text ?? '' }
+          {button?.text && button.text}
           {button?.icon && (
             <Image src={button?.icon} alt="Icon" width={20} height={20} />
           )}

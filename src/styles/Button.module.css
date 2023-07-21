@@ -1,0 +1,20 @@
+.fullwidth {
+    width: 100%;
+    background: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: center;
+    vertical-align: middle;
+    padding: .8rem;
+    border: var(--border-dashed);
+    border-radius: var(--border-radius-xs);
+    font-size: var(--font-size-s);
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 1.5rem auto .5rem auto;
+}
+.fullwidth:hover {
+    cursor: pointer;
+    border-color: var(--border-color-dark);
+}

@@ -5,14 +5,11 @@
   justify-content: space-between;
   align-items: center;
 }
-.nav button {
+.nav div {
   background: transparent;
   border: 1px solid transparent;
   outline: none;
   cursor: pointer;
   color: var(--text-grey);
   font-size: var(--font-size-xs);
-}
-.nav button:hover {
-  color: var(--text-primary);
 }
