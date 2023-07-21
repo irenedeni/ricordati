@@ -21,7 +21,7 @@ type TabItems = {
 
 export default function Home({ lent, borrowed }: TabItems) {
   const { data: session, status } = useSession()
-  const allowedUser = "irene.denicolo89@gmail.com"
+  const allowedUser = 'irene.denicolo89@gmail.com'
 
   return (
     <>
@@ -39,7 +39,9 @@ export default function Home({ lent, borrowed }: TabItems) {
         ) : status === 'unauthenticated' ? (
           <p>Unauthenticated</p>
         ) : null}
-        {session && status === 'authenticated' && (session?.user?.email === allowedUser) ? (
+        {session &&
+        status === 'authenticated' &&
+        session?.user?.email === allowedUser ? (
           <>
             <button onClick={() => signOut()}>
               <a>Log out</a>
@@ -81,4 +83,3 @@ export const getStaticProps: GetStaticProps<TabItems> = async () => {
     revalidate: 10,
   }
 }
-

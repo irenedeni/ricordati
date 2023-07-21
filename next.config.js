@@ -1,14 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // async redirects() {
-  //     return [
-  //       {
-  //         source: '/borrowed',
-  //         destination: '/',
-  //         permanent: true,
-  //       },
-  //     ]
-  //   },
+  env: {
+    NEXT_PUBLIC_GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+  }
 }
 
 module.exports = nextConfig
