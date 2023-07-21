@@ -1,6 +1,9 @@
-import Head from 'next/head'
-import { Layout, Tabs } from '@/components/index'
+import { signOut, useSession } from 'next-auth/react'
+import { useState } from 'react'
 import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import Link from 'next/link'
+import { Layout, Tabs } from '@/components/index'
 import { getItems } from '../lib/prisma'
 
 type Item = {
@@ -17,6 +20,9 @@ type TabItems = {
 }
 
 export default function Home({ lent, borrowed }: TabItems) {
+  const { data: session, status } = useSession()
+  const allowedUser = 'irene.denicolo89@gmail.com'
+
   return (
     <>
       <Head>
@@ -28,7 +34,23 @@ export default function Home({ lent, borrowed }: TabItems) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Layout>
-        <Tabs tabs={{ lent, borrowed }} />
+        {status === 'loading' ? (
+          <p>Loading...</p>
+        ) : status === 'unauthenticated' ? (
+          <p>Unauthenticated</p>
+        ) : null}
+        {session &&
+        status === 'authenticated' &&
+        session?.user?.email === allowedUser ? (
+          <>
+            <button onClick={() => signOut()}>
+              <a>Log out</a>
+            </button>
+            <Tabs tabs={{ lent, borrowed }} />
+          </>
+        ) : (
+          <Link href="/api/auth/signin">Log in</Link>
+        )}
       </Layout>
     </>
   )

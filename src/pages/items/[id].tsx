@@ -40,14 +40,12 @@ export default function Update(item: Item): React.JSX.Element {
   }
 
   async function deleteItem(itemId: string): Promise<void> {
-    console.log('ID!!', itemId)
     await fetch(`/api/item/${itemId}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     })
     Router.push('/')
   }
-  console.log('ID???', id)
   return (
     <>
       <Layout>
