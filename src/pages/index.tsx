@@ -11,6 +11,7 @@ type Item = {
   person: string
   createdAt: Date | string
   updatedAt?: Date | string
+  image?: string | null
 }
 
 type TabItems = {
@@ -59,6 +60,7 @@ const formattedItem = (item: Item) => ({
   name: item.name,
   createdAt: item.createdAt.toString(),
   person: item.person,
+  image: item?.image,
   updatedAt: item.updatedAt ? item.updatedAt.toString() : undefined,
 })
 

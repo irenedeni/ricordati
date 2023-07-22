@@ -5,11 +5,13 @@ type TabItem = {
   name: string
   person: string
   id: string
+  createdAt: Date | string
+  image?: string | null
 }
 
 type TabsItems = {
   items: TabItem[]
-  itemsType?: string
+  itemsType: string
 }
 
 
@@ -22,7 +24,10 @@ const TabContent = ({ items, itemsType }: TabsItems): React.JSX.Element => {
           <ItemCard
             name={item.name}
             person={item.person}
+            createdAt={item.createdAt}
+            image={item.image}
             id={item.id}
+            type={itemsType}
             key={i}
           />
         ))}

@@ -40,6 +40,7 @@
 
 .tabToggle {
   position: absolute;
+  height: 100%;
   top: 65px;
   width: 100%;
   justify-content: center;

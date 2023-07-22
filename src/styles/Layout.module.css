@@ -5,8 +5,9 @@
   align-items: center;
   padding: 1.5rem;
   width: 100%;
-  margin: auto;
+  margin: -2rem auto auto auto;
   height: 100%;
+  flex: 1;
   border-top-right-radius: var(--border-radius-l);
   border-top-left-radius: var(--border-radius-l);
   background-color: var(--color-white);
