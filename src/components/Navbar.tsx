@@ -29,7 +29,7 @@ const Navbar = ({ button }: NavbarProps): React.JSX.Element => {
       transition={{ type: 'linear' }}
       className={styles.nav}
     >
-      <Link href={router.basePath}>
+      <Link href="/">
         <Image
           src={`${router.basePath}/assets/logo.png`}
           alt="Ricordati logo"

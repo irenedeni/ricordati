@@ -50,17 +50,7 @@ export default function Create() {
             value={image}
           />
           <label htmlFor="ownership">Owned by me:</label>
-          <select
-            name="ownership"
-            id="ownership"
-            onChange={(e) =>
-              setOwnedByMe(e.target.value === 'true' ? true : false)
-            }
-            value={ownedByMe ? 'true' : 'false'}
-          >
-            <option value="false">No</option>
-            <option value="true">Yes</option>
-          </select>
+          <input type="checkbox" checked={ownedByMe} onChange={() => setOwnedByMe(!ownedByMe)} />
           <input disabled={!name || !person} type="submit" value="Create" />
           <a onClick={() => Router.push('/')}>
             or Cancel
