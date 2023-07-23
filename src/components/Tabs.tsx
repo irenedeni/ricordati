@@ -6,6 +6,8 @@ type TabItem = {
   name: string
   person: string
   id: string
+  createdAt: Date | string
+  image?: string | null
 }
 
 type TabsItems = {
@@ -18,18 +20,17 @@ type TabsItems = {
 const Tabs = (tabs: TabsItems): React.JSX.Element => {
   const { lent, borrowed } = tabs.tabs
   const [isActive, setIsActive] = useState(true)
-
   const handleTabClick = () => {
     setIsActive(!isActive)
   }
 
   return (
     <div className={styles.tabs}>
-      <TabToggle title="Borrowed" active={isActive} onClick={handleTabClick}>
-        <TabContent items={borrowed} />
+      <TabToggle title="Lent out" active={isActive} onClick={handleTabClick} elementsCount={lent.length}>
+        <TabContent items={lent} itemsType="lent"/>
       </TabToggle>
-      <TabToggle title="Lent out" active={!isActive} onClick={handleTabClick}>
-        <TabContent items={lent} />
+      <TabToggle title="Borrowed" active={!isActive} onClick={handleTabClick} elementsCount={borrowed.length}>
+        <TabContent items={borrowed} itemsType="borrowed"/>
       </TabToggle>
     </div>
   )

@@ -8,7 +8,7 @@
   background-color: var(--bg-grey);
   position: relative;
   max-width: 500px;
-  padding: 0.5rem;
+  padding: .5rem;
 }
 
 .toggle {
@@ -23,10 +23,15 @@
   padding: 8px 7px 7px 7px;
 }
 
+.toggle :hover {
+  cursor: pointer;
+}
+
 .active {
   background-color: var(--color-primary);
   color: var(--color-white);
 }
+
 
 .disabled {
   background-color: transparent;
@@ -35,9 +40,9 @@
 
 .tabToggle {
   position: absolute;
+  height: 100%;
   top: 65px;
   width: 100%;
-  justify-content: center;
 }
 
 .tabContentContainer {
@@ -50,5 +55,34 @@
 .tabContent {
   width: 100%;
   border-radius: var(--border-radius-m);
-  margin-top: 1rem;
+  margin: 1rem auto;
 }
+
+.tabTitle {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: -2rem;
+}
+
+.elementsCount {
+  border-radius: 50px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: .2rem;
+  right: -2rem;
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  width: 23px;
+  height: 23px;
+}
+
+.activeElementsCount {
+  background-color: var(--bg-notification);
+}
+.disabledElementsCount {
+  background-color: var(--color-disabled);
+}
+

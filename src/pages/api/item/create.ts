@@ -1,9 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../../lib/prisma'
-
-const capitalize = (str: string) => {
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
+import { capitalize } from '../../../lib/functions'
 
 // POST /api/item/create
 export default async function handle(

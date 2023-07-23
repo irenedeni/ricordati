@@ -11,6 +11,7 @@ type Props = {
   active?: boolean
   onClick?: () => void
   children?: React.ReactNode
+  elementsCount?: number
 }
 
 const TabToggle = ({
@@ -18,6 +19,7 @@ const TabToggle = ({
   active,
   onClick,
   children,
+  elementsCount,
 }: Props): React.JSX.Element => {
   return (
     <>
@@ -33,12 +35,18 @@ const TabToggle = ({
           animate="enter"
           exit="exit"
           transition={{ type: 'linear' }}
+          className={styles.tabTitle}
         >
           {title}
+          {elementsCount && 
+            <span className={`${styles.elementsCount} ${
+              active ? styles.activeElementsCount : styles.disabledElementsCount
+            }`}>{elementsCount}</span>
+          }
         </motion.div>
       </div>
       <div
-        style={{ display: active ? 'flex' : 'none' }}
+        style={{ display: active ? 'block' : 'none' }}
         className={styles.tabToggle}
       >
         {children}

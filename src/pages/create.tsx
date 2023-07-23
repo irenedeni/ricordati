@@ -54,7 +54,7 @@ export default function Create() {
             <option value="true">Yes</option>
           </select>
           <input disabled={!name || !person} type="submit" value="Create" />
-          <a className="back" onClick={() => Router.push('/')}>
+          <a onClick={() => Router.push('/')}>
             or Cancel
           </a>
         </form>

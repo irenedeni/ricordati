@@ -3,9 +3,53 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0.5rem;
   width: 100%;
+  min-height: 10rem;
   border-radius: var(--border-radius-s);
   background-color: var(--bg-grey);
   margin: 1rem auto;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 1rem;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: var(--font-size-l);
+  font-weight: 500;
+  color: var(--text-dark-grey);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: var(--font-size-s);
+  font-weight: 400;
+  color: var(--text-grey);
+}
+
+.image {
+  border-radius: var(--border-radius-l);
+  object-fit: cover;
+}
+
+.footer {
+  color: var(--text-dark-grey);
+  text-transform: uppercase;
+  width: 100%;
+  font-weight: 500;
+  background-color: var(--color-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 1rem 10px 1rem;
+  border-bottom-left-radius: var(--border-radius-s);
+  border-bottom-right-radius: var(--border-radius-s);
 }

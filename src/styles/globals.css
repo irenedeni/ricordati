@@ -4,6 +4,7 @@
   --border-radius-s: 8px;
   --border-radius-xs: 4px;
   --border-dashed: 1px dashed rgba(197, 197, 197, 1);
+  --border-color-dark: rgba(22, 24, 23, 1);
   --border-input: 1px solid rgba(139, 139, 137, 0.5);
   --font-primary: 'Graphik', 'Rubik', sans-serif;
   --font-size-xl: 32px;
@@ -13,13 +14,15 @@
   --font-size-xs: 14px;
   --text-primary: rgba(22, 24, 23, 1);
   --text-grey: rgba(78, 63, 55, 0.5);
+  --text-dark-grey: rgba(78, 63, 55, 1);
   --bg-primary: rgba(253, 243, 232, 1);
   --bg-grey: rgba(248, 248, 248, 1);
   --color-primary: rgba(244, 127, 118, 1);
   --color-secondary: rgba(253, 243, 232, 1);
   --color-white: rgba(255, 255, 255, 1);
   --color-disabled: rgba(68, 35, 69, 0.3);
-  --button-primary: rgba(68, 35, 69, 1);
+  --bg-notification: rgba(68, 35, 69, 1);
+  --button-primary: rgba(rgba(67, 35, 69, 1));
 }
 
 * {
@@ -28,22 +31,28 @@
   margin: 0;
 }
 
+html {
+  height: 100%;
+}
+
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  min-height: 100vh;
 }
 
 body {
   color: var(--text-primary);
-  background: var(--bg-primary);
+  background: var(--color-white);
   font-family: var(--font-primary);
   width: 100%;
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   align-items: flex-start;
-  justify-content: center;
   letter-spacing: -0.1px;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -55,5 +64,23 @@ a {
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
+
+button {
+  display: inline-block;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border-radius: 0;
+}
+

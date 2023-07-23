@@ -1,5 +1,4 @@
 import { signOut, useSession } from 'next-auth/react'
-import { useState } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -12,6 +11,7 @@ type Item = {
   person: string
   createdAt: Date | string
   updatedAt?: Date | string
+  image?: string | null
 }
 
 type TabItems = {
@@ -21,7 +21,13 @@ type TabItems = {
 
 export default function Home({ lent, borrowed }: TabItems) {
   const { data: session, status } = useSession()
-  const allowedUser = 'irene.denicolo89@gmail.com'
+
+  const navProps = {
+    button: {
+      action: () => signOut(),
+      icon: '/assets/logout.png',
+    }
+  }
 
   return (
     <>
@@ -33,24 +39,17 @@ export default function Home({ lent, borrowed }: TabItems) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Layout>
+      <Layout button={navProps.button}>
         {status === 'loading' ? (
-          <p>Loading...</p>
+          <div>Loading...</div>
         ) : status === 'unauthenticated' ? (
-          <p>Unauthenticated</p>
+          <Link href="/api/auth/signin">Log in</Link>
         ) : null}
         {session &&
         status === 'authenticated' &&
-        session?.user?.email === allowedUser ? (
-          <>
-            <button onClick={() => signOut()}>
-              <a>Log out</a>
-            </button>
+        session?.user?.email === process.env.NEXT_PUBLIC_ALLOWED_USER && (
             <Tabs tabs={{ lent, borrowed }} />
-          </>
-        ) : (
-          <Link href="/api/auth/signin">Log in</Link>
-        )}
+        )} 
       </Layout>
     </>
   )
@@ -61,6 +60,7 @@ const formattedItem = (item: Item) => ({
   name: item.name,
   createdAt: item.createdAt.toString(),
   person: item.person,
+  image: item.image ?? null,
   updatedAt: item.updatedAt ? item.updatedAt.toString() : undefined,
 })
 
@@ -68,10 +68,10 @@ export const getStaticProps: GetStaticProps<TabItems> = async () => {
   const lent: Item[] = await getItems(true)
   const borrowed: Item[] = await getItems(false)
 
-  const formattedLentItems: Item[] = lent.map((item: Item) =>
+  const formattedLentItems: Item[] = lent?.map((item: Item) =>
     formattedItem(item),
   )
-  const formattedBorrowedItems: Item[] = borrowed.map((item: Item) =>
+  const formattedBorrowedItems: Item[] = borrowed?.map((item: Item) =>
     formattedItem(item),
   )
 

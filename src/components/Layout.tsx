@@ -12,12 +12,17 @@ const variants = {
 type Props = {
   children: ReactNode
   className?: string
+  button?: {
+    text?: string
+    action?: () => void
+    icon?: string
+  }
 }
 
-const Layout = ({ children, className }: Props): React.JSX.Element => {
+const Layout = ({ children, className, button }: Props): React.JSX.Element => {
   return (
     <>
-      <Navbar />
+      <Navbar button={button} />
       <motion.main
         variants={variants}
         initial="hidden"
