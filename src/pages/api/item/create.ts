@@ -7,13 +7,13 @@ export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { name, person, ownedByMe } = req.body
-
+  const { name, person, ownedByMe, image } = req.body
   const result = await prisma.item.create({
     data: {
       name: capitalize(name),
       person: capitalize(person),
       ownedByMe,
+      image,
     },
   })
   res.json(result)

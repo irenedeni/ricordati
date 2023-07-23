@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Router from 'next/router'
 import { GetServerSideProps } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next'
 import { getItem } from '../../lib/prisma'
 import { Layout } from '@/components'
 
@@ -10,12 +11,14 @@ type Item = {
     name: string
     person: string
     ownedByMe: boolean
+    image?: string | null
   }
 }
 
 export default function Update(item: Item): React.JSX.Element {
-  const { id, name, person, ownedByMe } = item.item
+  const { id, name, person, ownedByMe, image } = item.item
   const [formName, setFormName] = useState(name)
+  const [formImage, setFormImage] = useState(image ?? '')
   const [formPerson, setFormPerson] = useState(person)
   const [formOwnedByMe, setFormOwnedByMe] = useState(ownedByMe)
 
@@ -26,6 +29,7 @@ export default function Update(item: Item): React.JSX.Element {
         name: formName,
         person: formPerson,
         ownedByMe: formOwnedByMe,
+        image: formImage,
         id,
       }
       await fetch(`/api/item/update/${id}`, {
@@ -39,7 +43,7 @@ export default function Update(item: Item): React.JSX.Element {
     }
   }
 
-  async function deleteItem(itemId: string): Promise<void> {
+  const deleteItem = async (itemId: string): Promise<void> => {
     await fetch(`/api/item/${itemId}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -65,6 +69,13 @@ export default function Update(item: Item): React.JSX.Element {
             type="text"
             value={formPerson}
           />
+          <input
+            autoFocus
+            onChange={(e) => setFormImage(e.target.value)}
+            placeholder="image"
+            type="text"
+            value={formImage ?? ''}
+          />
           <label htmlFor="ownership">Owned by me:</label>
           <select
             name="ownership"
@@ -77,8 +88,8 @@ export default function Update(item: Item): React.JSX.Element {
             <option value="Yes">Yes</option>
           </select>
           <input disabled={!formName || !formPerson} type="submit" value="Edit item" />
-          <button onClick={() => deleteItem(id)}>Delete item</button>
         </form>
+        <button onClick={() => deleteItem(id)}>Delete item</button>
       </Layout>
     </>
   )

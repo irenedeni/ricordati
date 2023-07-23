@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import styles from '@/styles/ItemCard.module.css'
 import Button from './Button'
 import { capitalize } from '@/lib/functions'
@@ -40,7 +39,7 @@ const ItemCard = ({
           <div className={styles.subtitle}>{subtitle}{capitalize(person)}</div>
         </div>
         {image ? (
-          <Image
+          <img
             src={image}
             alt={name}
             width={80}

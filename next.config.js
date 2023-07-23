@@ -7,5 +7,4 @@ const nextConfig = {
     domains: ['previews.123rf.com'],
   },
 }
-
 module.exports = nextConfig
