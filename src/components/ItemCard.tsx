@@ -39,7 +39,7 @@ const ItemCard = ({
           <div className={styles.title}>{capitalize(name)}</div>
           <div className={styles.subtitle}>{subtitle}{capitalize(person)}</div>
         </div>
-        {image && (
+        {image ? (
           <Image
             src={image}
             alt={name}
@@ -47,11 +47,14 @@ const ItemCard = ({
             height={80}
             className={styles.image}
           />
-        )}
+        ) : (
+          <div className={styles.imagePlaceholder}>Image Placeholder</div>
+        )
+      }
       </div>
       <div className={styles.footer}>
         <div className={styles.date}>{formatDate(createdAt)}</div>
-        <Button text="Edit item" href={`/items/${id}`} />
+        <Button text="Edit item" href={`/items/${id}`} secondary small hasIcon/>
       </div>
     </div>
   )

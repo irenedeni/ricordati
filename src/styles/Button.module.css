@@ -18,3 +18,45 @@
     cursor: pointer;
     border-color: var(--border-color-dark);
 }
+
+.primary {
+    padding: 13px, 1.5rem, 1rem, 1.5rem;
+    background-color: var(--button-primary);
+    color: var(--color-white);
+    border-radius: var(--border-radius-m);
+    font-size: var(--font-size-s);
+}
+
+.secondary {
+    padding: 13px, 1.5rem, 1rem, 1.5rem;
+    background-color: transparent;
+}
+
+.large {
+    padding: 13px, 1.5rem, 1rem, 1.5rem;
+    font-size: var(--font-size-m);
+}
+
+.small {
+    padding: .5rem, 1rem;
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+}
+
+.hasIcon {
+    position: relative;
+    padding-right: 20px;
+}
+
+.hasIcon::after {
+  content: "\279D"; 
+  position: absolute;
+  top: 50%;
+  right: 0px; 
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+.hasIcon:hover::after {
+    transform: translateX(3px) translateY(-50%); 
+  }

@@ -60,7 +60,7 @@ const formattedItem = (item: Item) => ({
   name: item.name,
   createdAt: item.createdAt.toString(),
   person: item.person,
-  image: item?.image,
+  image: item.image ?? null,
   updatedAt: item.updatedAt ? item.updatedAt.toString() : undefined,
 })
 
@@ -68,10 +68,10 @@ export const getStaticProps: GetStaticProps<TabItems> = async () => {
   const lent: Item[] = await getItems(true)
   const borrowed: Item[] = await getItems(false)
 
-  const formattedLentItems: Item[] = lent.map((item: Item) =>
+  const formattedLentItems: Item[] = lent?.map((item: Item) =>
     formattedItem(item),
   )
-  const formattedBorrowedItems: Item[] = borrowed.map((item: Item) =>
+  const formattedBorrowedItems: Item[] = borrowed?.map((item: Item) =>
     formattedItem(item),
   )
 

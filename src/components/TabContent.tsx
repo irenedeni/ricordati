@@ -25,7 +25,7 @@ const TabContent = ({ items, itemsType }: TabsItems): React.JSX.Element => {
             name={item.name}
             person={item.person}
             createdAt={item.createdAt}
-            image={item.image}
+            image={item.image ?? null}
             id={item.id}
             type={itemsType}
             key={i}

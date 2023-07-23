@@ -46,7 +46,7 @@ const TabToggle = ({
         </motion.div>
       </div>
       <div
-        style={{ display: active ? 'flex' : 'none' }}
+        style={{ display: active ? 'block' : 'none' }}
         className={styles.tabToggle}
       >
         {children}

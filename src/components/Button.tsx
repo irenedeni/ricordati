@@ -7,28 +7,26 @@ type Props = {
   className?: string
   fullwidth?: boolean
   primary?: boolean
+  hasIcon?: boolean
+  small?: boolean
+  large?: boolean
   secondary?: boolean
   warning?: boolean
   href?: string
 }
 
-const Button = ({
-  text,
-  className,
-  action,
-  fullwidth,
-  primary,
-  secondary,
-  warning,
-  href,
-}: Props): React.JSX.Element => {
+const Button = (button: Props): React.JSX.Element => {
+  const { text, action, className, fullwidth, primary, small, large, hasIcon, secondary, warning, href } = button
   const ButtonElement = (
     <button
-      className={`${className} 
-        ${fullwidth && styles.fullwidth} 
-        ${primary && styles.primary} 
-        ${secondary && styles.secondary} 
-        ${warning && styles.warning}
+      className={`${className ? className : ''} 
+        ${fullwidth ? styles.fullwidth : ''} 
+        ${small ? styles.small : ''} 
+        ${large ? styles.large : ''} 
+        ${primary ? styles.primary : ''} 
+        ${secondary ? styles.secondary : ''} 
+        ${warning ? styles.warning : ''}
+        ${hasIcon ? styles.hasIcon : ''}
       `}
       onClick={action ?? undefined}
     >
