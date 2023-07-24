@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import { Layout } from '@/components'
 import Router from 'next/router'
+import { Layout } from '@/components'
 
 export default function Create() {
   const [name, setName] = useState('')
   const [person, setPerson] = useState('')
-  const [image, setImage] = useState('')
   const [ownedByMe, setOwnedByMe] = useState(false)
+  const [selectedImage, setSelectedImage] = useState(null as any)
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
-      const body = { name, person, ownedByMe, image }
+      const body = { name, person, ownedByMe, image: selectedImage }
       await fetch('/api/item/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -20,6 +20,17 @@ export default function Create() {
       await Router.push('/')
     } catch (error) {
       console.error(error)
+    }
+  }
+
+  const handleImageChange = (e: any) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setSelectedImage(reader.result)
+      }
+      reader.readAsDataURL(file)
     }
   }
 
@@ -42,19 +53,23 @@ export default function Create() {
             type="text"
             value={person}
           />
+          <label htmlFor="image">Upload Image:</label>
           <input
-            autoFocus
-            onChange={(e) => setImage(e.target.value)}
-            placeholder="image"
-            type="text"
-            value={image}
+            type="file"
+            id="image"
+            accept="image/*"
+            capture={true} // Enables the camera on mobile devices
+            onChange={handleImageChange}
           />
+          {selectedImage && <img src={selectedImage} alt="Uploaded" />}
           <label htmlFor="ownership">Owned by me:</label>
-          <input type="checkbox" checked={ownedByMe} onChange={() => setOwnedByMe(!ownedByMe)} />
+          <input
+            type="checkbox"
+            checked={ownedByMe}
+            onChange={() => setOwnedByMe(!ownedByMe)}
+          />
           <input disabled={!name || !person} type="submit" value="Create" />
-          <a onClick={() => Router.push('/')}>
-            or Cancel
-          </a>
+          <a onClick={() => Router.push('/')}>or Cancel</a>
         </form>
       </Layout>
     </>

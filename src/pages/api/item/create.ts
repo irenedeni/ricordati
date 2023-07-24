@@ -16,5 +16,5 @@ export default async function handle(
       image,
     },
   })
-  res.json(result)
+  res.status(200).json(result) 
 }
