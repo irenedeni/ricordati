@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Router from 'next/router'
 import { Layout } from '@/components'
+import Image from 'next/image'
 
 export default function Create() {
   const [name, setName] = useState('')
@@ -61,7 +62,7 @@ export default function Create() {
             capture={true} // Enables the camera on mobile devices
             onChange={handleImageChange}
           />
-          {selectedImage && <img src={selectedImage} alt="Uploaded" />}
+          {selectedImage && <Image src={selectedImage} alt="Uploaded" width={80} height={80} />}
           <label htmlFor="ownership">Owned by me:</label>
           <input
             type="checkbox"

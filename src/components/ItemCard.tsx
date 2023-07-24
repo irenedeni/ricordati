@@ -1,7 +1,7 @@
 import styles from '@/styles/ItemCard.module.css'
 import Button from './Button'
 import { capitalize } from '@/lib/functions'
-
+import Image from 'next/image'
 type Props = {
   id: string
   name: string
@@ -39,7 +39,7 @@ const ItemCard = ({
           <div className={styles.subtitle}>{subtitle}{capitalize(person)}</div>
         </div>
         {image ? (
-          <img
+          <Image
             src={image}
             alt={name}
             width={80}
