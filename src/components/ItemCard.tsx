@@ -47,7 +47,7 @@ const ItemCard = ({
             className={styles.image}
           />
         ) : (
-          <div className={styles.imagePlaceholder}>Image Placeholder</div>
+          <Image src="/assets/image-placeholder.png" alt="Placeholder" width={80} height={80} className={styles.image} />
         )
       }
       </div>
