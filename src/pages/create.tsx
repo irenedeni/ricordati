@@ -9,31 +9,41 @@ export default function Create() {
   const [ownedByMe, setOwnedByMe] = useState(false)
   const [selectedImage, setSelectedImage] = useState(null as any)
 
-  const submitData = async (e: React.SyntheticEvent) => {
-    e.preventDefault()
+  const submitData = async (e:any) => {
+    e.preventDefault();
     try {
-      const body = { name, person, ownedByMe, image: selectedImage }
+      const response = await fetch('/api/compressImage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ imageData: selectedImage }),
+      });
+
+      const { resizedImageData } = await response.json();
+      console.log('resizedImageData', resizedImageData)
+      const body = { name, person, ownedByMe, image: resizedImageData };
       await fetch('/api/item/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
-      })
-      await Router.push('/')
-    } catch (error) {
-      console.error(error)
-    }
-  }
+      });
 
-  const handleImageChange = (e: any) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setSelectedImage(reader.result)
-      }
-      reader.readAsDataURL(file)
+      await Router.push('/');
+    } catch (error) {
+      console.error(error);
     }
-  }
+  };
+
+  const handleImageChange = (e:any) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
 
   return (
     <>
