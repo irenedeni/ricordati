@@ -130,7 +130,11 @@ export default function Form({ update, item }: Props): React.JSX.Element {
           checked={ownedByMe}
           onChange={() => setOwnedByMe(!ownedByMe)}
         />
-        <input disabled={!name || !person} type="submit" value={update ? 'Edit' : 'Create'} />
+        <input
+          disabled={!name || !person}
+          type="submit"
+          value={update ? 'Edit' : 'Create'}
+        />
         <a onClick={() => Router.push('/')}>or Cancel</a>
       </form>
       {update && item?.id && (

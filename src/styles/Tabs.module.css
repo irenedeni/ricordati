@@ -8,7 +8,7 @@
   background-color: var(--bg-grey);
   position: relative;
   max-width: 500px;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .toggle {
@@ -31,7 +31,6 @@
   background-color: var(--color-primary);
   color: var(--color-white);
 }
-
 
 .disabled {
   background-color: transparent;
@@ -71,7 +70,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: .2rem;
+  bottom: 0.2rem;
   right: -2rem;
   color: var(--color-white);
   font-size: var(--font-size-xs);
@@ -82,7 +81,7 @@
 .activeElementsCount {
   background-color: var(--bg-notification);
 }
+
 .disabledElementsCount {
   background-color: var(--color-disabled);
 }
-

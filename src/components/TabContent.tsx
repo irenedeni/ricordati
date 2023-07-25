@@ -14,7 +14,6 @@ type TabsItems = {
   itemsType: string
 }
 
-
 const TabContent = ({ items, itemsType }: TabsItems): React.JSX.Element => {
   return (
     <div className={styles.tabContentContainer}>

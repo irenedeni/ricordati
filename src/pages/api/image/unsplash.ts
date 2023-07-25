@@ -2,15 +2,21 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import fetch from 'node-fetch'
 
-export default async function handler(req: NextApiRequest,
-    res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   const accessKey = process.env.UNSPLASH_ACCESS_KEY
   const name = req.query.name as string
   if (!name) {
-    return res.status(400).json({ error: 'You must provide a search query (item name).' });
+    return res
+      .status(400)
+      .json({ error: 'You must provide a search query (item name).' })
   }
 
-  const apiUrl = `https://api.unsplash.com/photos/random?client_id=${accessKey}&query=${encodeURIComponent(name)}`;
+  const apiUrl = `https://api.unsplash.com/photos/random?client_id=${accessKey}&query=${encodeURIComponent(
+    name,
+  )}`
 
   try {
     const response = await fetch(apiUrl)

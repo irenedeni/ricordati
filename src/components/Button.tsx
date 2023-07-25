@@ -16,7 +16,19 @@ type Props = {
 }
 
 const Button = (button: Props): React.JSX.Element => {
-  const { text, action, className, fullwidth, primary, small, large, hasIcon, secondary, warning, href } = button
+  const {
+    text,
+    action,
+    className,
+    fullwidth,
+    primary,
+    small,
+    large,
+    hasIcon,
+    secondary,
+    warning,
+    href,
+  } = button
   const ButtonElement = (
     <button
       className={`${className ? className : ''} 

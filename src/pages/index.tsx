@@ -26,7 +26,7 @@ export default function Home({ lent, borrowed }: TabItems) {
     button: {
       action: () => signOut(),
       icon: '/assets/logout.png',
-    }
+    },
   }
 
   return (
@@ -46,10 +46,10 @@ export default function Home({ lent, borrowed }: TabItems) {
           <Link href="/api/auth/signin">Log in</Link>
         ) : null}
         {session &&
-        status === 'authenticated' &&
-        session?.user?.email === process.env.NEXT_PUBLIC_ALLOWED_USER && (
+          status === 'authenticated' &&
+          session?.user?.email === process.env.NEXT_PUBLIC_ALLOWED_USER && (
             <Tabs tabs={{ lent, borrowed }} />
-        )} 
+          )}
       </Layout>
     </>
   )

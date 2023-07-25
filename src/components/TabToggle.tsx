@@ -38,11 +38,17 @@ const TabToggle = ({
           className={styles.tabTitle}
         >
           {title}
-          {elementsCount && 
-            <span className={`${styles.elementsCount} ${
-              active ? styles.activeElementsCount : styles.disabledElementsCount
-            }`}>{elementsCount}</span>
-          }
+          {elementsCount && (
+            <span
+              className={`${styles.elementsCount} ${
+                active
+                  ? styles.activeElementsCount
+                  : styles.disabledElementsCount
+              }`}
+            >
+              {elementsCount}
+            </span>
+          )}
         </motion.div>
       </div>
       <div

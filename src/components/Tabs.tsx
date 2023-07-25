@@ -26,11 +26,21 @@ const Tabs = (tabs: TabsItems): React.JSX.Element => {
 
   return (
     <div className={styles.tabs}>
-      <TabToggle title="Lent out" active={isActive} onClick={handleTabClick} elementsCount={lent.length}>
-        <TabContent items={lent} itemsType="lent"/>
+      <TabToggle
+        title="Lent out"
+        active={isActive}
+        onClick={handleTabClick}
+        elementsCount={lent.length}
+      >
+        <TabContent items={lent} itemsType="lent" />
       </TabToggle>
-      <TabToggle title="Borrowed" active={!isActive} onClick={handleTabClick} elementsCount={borrowed.length}>
-        <TabContent items={borrowed} itemsType="borrowed"/>
+      <TabToggle
+        title="Borrowed"
+        active={!isActive}
+        onClick={handleTabClick}
+        elementsCount={borrowed.length}
+      >
+        <TabContent items={borrowed} itemsType="borrowed" />
       </TabToggle>
     </div>
   )
