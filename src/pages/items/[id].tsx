@@ -17,7 +17,6 @@ type Item = {
 
 export default function Update(item: Item): React.JSX.Element {
   const { id, name, person, ownedByMe, image } = item.item
-  console.log('ownedByMe', ownedByMe)
   const [formName, setFormName] = useState(name)
   const [formImage, setFormImage] = useState(image ?? '')
   const [formPerson, setFormPerson] = useState(person)
@@ -50,11 +49,6 @@ export default function Update(item: Item): React.JSX.Element {
       headers: { 'Content-Type': 'application/json' },
     })
     Router.push('/')
-  }
-  
-  const handleOwnershipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('e.target.checked', e.target.checked)
-    setFormOwnedByMe(e.target.checked)
   }
 
   return (

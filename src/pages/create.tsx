@@ -11,22 +11,25 @@ export default function Create() {
 
   const submitData = async (e: any) => {
     e.preventDefault()
-    console.log('selectedImage', selectedImage)
-    if (selectedImage)
+    if (selectedImage) {
+      let resizedImage
       try {
-        const response = await fetch('/api/image/compressImage', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ imageData: selectedImage }),
-        })
-
-        const { resizedImageData } = await response.json()
-        console.log('resizedImageData', resizedImageData)
+        if(selectedImage.includes('data:image')) {
+          const response = await fetch('/api/image/compressImage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ imageData: selectedImage }),
+          })
+  
+          const { resizedImageData } = await response.json()
+          resizedImage = resizedImageData
+        }
+        
         const body = {
           name,
           person,
           ownedByMe,
-          image: resizedImageData ?? selectedImage,
+          image: resizedImage ?? selectedImage,
         }
         await fetch('/api/item/create', {
           method: 'POST',
@@ -38,6 +41,8 @@ export default function Create() {
       } catch (error) {
         console.error(error)
       }
+    }
+      
   }
 
   const handleImageChange = (e: any) => {
@@ -106,12 +111,8 @@ export default function Create() {
           <input disabled={!name || !person} type="submit" value="Create" />
           <a onClick={() => Router.push('/')}>or Cancel</a>
         </form>
-        {name && (
-          <>
-            <div>OR:</div>
-            <button onClick={generateImage}>Generate image</button>
-          </>
-        )}
+        <div>OR:</div>
+        <button onClick={generateImage} disabled={!name}>Generate image</button>
       </Layout>
     </>
   )
