@@ -11,6 +11,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="manifest" href="/manifest.json" />
         </Head>
         <body>
           <Main />
