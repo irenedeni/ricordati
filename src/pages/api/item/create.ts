@@ -16,5 +16,6 @@ export default async function handle(
       image,
     },
   })
+  res.setHeader('X-Reload-Page', 'true')
   res.status(200).json(result)
 }

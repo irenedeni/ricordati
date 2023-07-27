@@ -81,6 +81,6 @@ export const getServerSideProps: GetServerSideProps<TabItems> = async () => {
     props: {
       lent: formattedLentItems,
       borrowed: formattedBorrowedItems,
-    },
+    }
   }
 }

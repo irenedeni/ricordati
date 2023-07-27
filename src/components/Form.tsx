@@ -28,13 +28,14 @@ export default function Form({
   const [selectedImage, setSelectedImage] = useState(
     item?.image ?? (null as any),
   )
+  const router = useRouter()
 
   const submitData = async (e: any) => {
     e.preventDefault()
     if (selectedImage) {
       let resizedImage
       try {
-        if (selectedImage.includes('data:image')) {
+        if (selectedImage && selectedImage.includes('data:image')) {
           const response = await fetch('/api/image/compressImage', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -45,12 +46,14 @@ export default function Form({
           resizedImage = resizedImageData
         }
 
+        const image = resizedImage ? resizedImage : selectedImage ? selectedImage : null
+
         const body = {
           id: item?.id ?? null,
           name,
           person,
           ownedByMe,
-          image: resizedImage ?? selectedImage,
+          image: image,
         }
         const url = update ? `/api/item/update/${item?.id}` : '/api/item/create'
 
@@ -101,7 +104,7 @@ export default function Form({
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     })
-    Router.push('/')
+    await Router.push('/')
   }
 
   const nameLabel = mine ? "I'm lending out my..." : 'I am borrowing...'
