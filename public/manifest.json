@@ -1,0 +1,15 @@
+{
+  "name": "Ricordati App",
+  "short_name": "Ricordati",
+  "icons": [
+    {
+      "src": "/assets/logo.png",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#F47F76",
+  "background_color": "#FDF3E8",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}

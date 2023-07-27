@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+const withPWA = require('next-pwa')({
+  dest: 'public'
+})
+
 const nextConfig = {
   env: {
     NEXT_PUBLIC_GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
@@ -7,4 +11,4 @@ const nextConfig = {
     domains: ['previews.123rf.com', 'images.unsplash.com'],
   },
 }
-module.exports = nextConfig
+module.exports = withPWA(nextConfig)
