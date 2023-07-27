@@ -21,7 +21,7 @@ export default function Update(item: Item): React.JSX.Element {
     <>
       <Layout>
         <h1 className={styles.formTitle}>Edit {itemsType ?? ''} item</h1>
-        <Form update item={item.item} itemsType={itemsType as string}/>
+        <Form update item={item.item} itemsType={itemsType as string} />
       </Layout>
     </>
   )

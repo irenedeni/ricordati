@@ -9,7 +9,7 @@ export default function Create() {
     <>
       <Layout>
         <h1 className={styles.formTitle}>Add {itemsType ?? ''} item</h1>
-        <Form itemsType={itemsType as string}/>
+        <Form itemsType={itemsType as string} />
       </Layout>
     </>
   )

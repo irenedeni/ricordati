@@ -18,7 +18,10 @@ type TabsItems = {
 const TabContent = ({ items, itemsType }: TabsItems): React.JSX.Element => {
   return (
     <div className={styles.tabContentContainer}>
-      <Link href={`/create?itemsType=${encodeURIComponent(itemsType)}`} className={styles.buttonLink}>
+      <Link
+        href={`/create?itemsType=${encodeURIComponent(itemsType)}`}
+        className={styles.buttonLink}
+      >
         <Button text={`Add ${itemsType} item`} fullwidth />
       </Link>
       <div className={styles.tabContent}>
