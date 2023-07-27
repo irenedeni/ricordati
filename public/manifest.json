@@ -3,9 +3,9 @@
   "short_name": "Ricordati",
   "icons": [
     {
-      "src": "/assets/icon.svg",
-      "type": "image/svg+xml",
-      "size": "67x67",
+      "src": "/assets/icon.png",
+      "type": "image/png",
+      "size": "48x48",
       "purpose": "any"
     }
   ],
