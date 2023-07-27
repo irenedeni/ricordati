@@ -79,7 +79,6 @@ export default function Form({
   }
 
   const generateImage = async () => {
-    console.log('name', name)
     if (name) {
       try {
         const response = await fetch(
@@ -156,7 +155,7 @@ export default function Form({
           )}
           <label
             htmlFor="image"
-            className={`${styles.label} ${styles.fileInput}`}
+            className={`${styles.label} ${styles.generateButton}`}
           >
             Upload image ⬆️
             <input
@@ -192,14 +191,15 @@ export default function Form({
           />
         </div>
       </form>
-      <div className={styles.generateButtonContainer}>
+      <div className={`${styles.generateButtonContainer} ${
+            update ? styles.update : styles.create
+          }`}>
+        or
         <div
           onClick={generateImage}
-          className={`${styles.generateButton} ${
-            update ? styles.update : styles.create
-          }`}
+          className={styles.generateButton}
         >
-          or generate one! 🔄
+          Generate image 🔄
         </div>
       </div>
     </div>

@@ -97,6 +97,7 @@ input[type='text'] {
   border: var(--border-input);
   border-radius: var(--border-radius-xs);
   margin-bottom: 0.5rem;
+  font-size: var(--font-size-xs);
 }
 
 input[type='file'] {

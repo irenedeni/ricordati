@@ -67,8 +67,7 @@ const ItemCard = ({
         <Button
           text="Edit item"
           href={`/items/${id}`}
-          secondary
-          small
+          fullwidth
           hasIcon
         />
       </div>

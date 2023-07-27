@@ -4,6 +4,7 @@
   align-items: center;
   max-width: 500px;
   width: 100%;
+  position: relative;
 }
 
 .form {
@@ -34,32 +35,16 @@
 }
 
 .fileInput {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  background: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 0.5rem 1rem;
-  border: var(--border-dashed);
-  border-radius: var(--border-radius-xs);
+  padding: 0px;
   font-weight: 500;
-  font-size: var(--font-size-xxs);
-  color: var(--text-primary);
-  margin: 0 1rem;
-  height: 48px;
-}
-
-.fileInput:hover {
-  border-color: var(--border-color-dark);
+  font-size: var(--font-size-xs);
 }
 
 .buttonsContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: 3rem;
   flex-wrap: wrap;
 }
 
@@ -70,26 +55,45 @@
 }
 
 .generateButtonContainer {
-  position: relative;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  width: 100%;
+  left: 0;
+}
+.create  {
+    bottom: 143px;
+}
+
+.update  {
+    bottom: 200px;
 }
 
 .generateButton {
-  padding: 0px;
-  border-bottom: var(--border-dashed);
+margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0.5rem 1rem;
+  border: var(--border-dashed);
+  border-radius: var(--border-radius-xs);
   font-weight: 500;
-  font-size: var(--font-size-xxs);
+  font-size: var(--font-size-xs);
+  color: var(--text-primary);
+  height: 48px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .generateButton:hover {
-  border-bottom: 1px dashed var(--border-color-dark);
-}
-
-.update {
-  margin-top: -220px;
-}
-
-.create {
-  margin-top: -162px;
+  border-color: var(--border-color-dark);
 }
 
 .generateButton:hover {

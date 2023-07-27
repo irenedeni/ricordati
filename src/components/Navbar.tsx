@@ -33,15 +33,15 @@ const Navbar = ({ button }: NavbarProps): React.JSX.Element => {
         <Image
           src={`${router.basePath}/assets/logo.png`}
           alt="Ricordati logo"
-          width={130}
-          height={30}
+          width={160}
+          height={37}
         />
       </Link>
       {button && (
         <div onClick={button?.action}>
           {button?.text && button.text}
           {button?.icon && (
-            <Image src={button?.icon} alt="Icon" width={20} height={20} />
+            <Image src={button?.icon} alt="Icon" width={25} height={25} />
           )}
         </div>
       )}

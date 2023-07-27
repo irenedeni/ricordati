@@ -1,5 +1,5 @@
 import { signOut, useSession } from 'next-auth/react'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Layout, Tabs } from '@/components/index'
@@ -19,9 +19,9 @@ type TabItems = {
   borrowed: Item[]
 }
 
-export default function Home({ lent, borrowed }: TabItems) {
+export default function Home(props: TabItems) {
   const { data: session, status } = useSession()
-
+const { lent, borrowed } = props
   const navProps = {
     button: {
       action: () => signOut(),
@@ -63,8 +63,7 @@ const formattedItem = (item: Item) => ({
   image: item.image ?? null,
   updatedAt: item.updatedAt ? item.updatedAt.toString() : undefined,
 })
-
-export const getStaticProps: GetStaticProps<TabItems> = async () => {
+export const getServerSideProps: GetServerSideProps<TabItems> = async () => {
   const lent: Item[] = await getItems(true)
   const borrowed: Item[] = await getItems(false)
 
@@ -79,7 +78,6 @@ export const getStaticProps: GetStaticProps<TabItems> = async () => {
     props: {
       lent: formattedLentItems,
       borrowed: formattedBorrowedItems,
-    },
-    revalidate: 10,
+    }  
   }
 }
