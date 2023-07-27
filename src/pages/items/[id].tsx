@@ -16,11 +16,11 @@ type Item = {
 
 export default function Update(item: Item): React.JSX.Element {
   const router = useRouter()
-  const { itemsType } = router?.query
+  const { itemsType } = router.query
   return (
     <>
       <Layout>
-        <h1 className={styles.formTitle}>Edit item</h1>
+        <h1 className={styles.formTitle}>Edit {itemsType ?? ''} item</h1>
         <Form update item={item.item} itemsType={itemsType as string}/>
       </Layout>
     </>

@@ -4,7 +4,7 @@ import styles from '@/styles/Form.module.css'
 
 export default function Create() {
   const router = useRouter()
-  const { itemsType } = router?.query
+  const { itemsType } = router.query
   return (
     <>
       <Layout>

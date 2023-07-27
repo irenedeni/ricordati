@@ -129,6 +129,20 @@ export default function Form({
           type="text"
           value={person}
         />
+        {update && (
+          <div className={styles.ownership}>
+            <label htmlFor="ownership" className={styles.label}>
+              Mine?:
+            </label>
+            <input
+              type="checkbox"
+              checked={ownedByMe}
+              onChange={() => setOwnedByMe(!ownedByMe)}
+            />
+            <div className={styles.outer}></div>
+            <div className={styles.inner}></div>
+          </div>
+        )}
         <div className={styles.imageContainer}>
           {selectedImage && (
             <Image
@@ -154,33 +168,32 @@ export default function Form({
             />
           </label>
         </div>
-
-        {update && (
-          <>
-            <label htmlFor="ownership" className={styles.label}>
-              Mine?:
-            </label>
-            <input
-              type="checkbox"
-              checked={ownedByMe}
-              onChange={() => setOwnedByMe(!ownedByMe)}
-            />
-          </>
-        )}
         <div className={styles.buttonsContainer}>
           {update && item?.id && (
-            <Button action={() => deleteItem(item?.id)} text="Delete item" warning/>
+            <Button
+              action={() => deleteItem(item?.id)}
+              text="Delete item"
+              warning
+              secondary
+              className={styles.btn}
+            />
           )}
           <input
             disabled={!name || !person}
             type="submit"
             value={update ? 'Save changes' : 'Save item'}
+            className={styles.btn}
           />
-          <Button action={() => Router.push('/')} text="Cancel" secondary />
+          <Button
+            action={() => Router.push('/')}
+            text="Cancel"
+            secondary
+            className={styles.btn}
+          />
         </div>
       </form>
       <div className={styles.generateButtonContainer}>
-        <div onClick={generateImage} className={styles.generateButton}>
+        <div onClick={generateImage} className={`${styles.generateButton} ${update ? styles.update : styles.create}`}>
           or generate one! 🔄
         </div>
       </div>

@@ -17,7 +17,7 @@
 }
 
 .label {
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-xxs);
   font-weight: 500;
   letter-spacing: -1%;
   color: var(--text-primary);
@@ -45,29 +45,51 @@
   border: var(--border-dashed);
   border-radius: var(--border-radius-xs);
   font-weight: 500;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-xxs);
   color: var(--text-primary);
   margin: 0 1rem;
   height: 48px;
 }
 
+.fileInput:hover {
+  border-color: var(--border-color-dark);
+}
+
 .buttonsContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  max-width: 50%;
+  width: 100%;
+  margin: 5px;
 }
 
 .generateButtonContainer {
-    position: relative;
+  position: relative;
 }
 
 .generateButton {
   padding: 0px;
-  border-bottom: var(--border-dashed); 
+  border-bottom: var(--border-dashed);
   font-weight: 500;
-  font-size: var(--font-size-xs);
-  margin-top: -112px;
+  font-size: var(--font-size-xxs);
+}
+
+.generateButton:hover {
+  border-bottom: 1px dashed var(--border-color-dark);
+}
+
+.update {
+  margin-top: -220px;
+}
+
+.create {
+  margin-top: -162px;
 }
 
 .generateButton:hover {
@@ -78,4 +100,9 @@
   border-radius: var(--border-radius-l);
   object-fit: cover;
   margin: 0 auto 1rem auto;
+}
+
+.ownership {
+  display: flex;
+  align-items: center;
 }

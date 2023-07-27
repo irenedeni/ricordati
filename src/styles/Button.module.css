@@ -25,6 +25,10 @@
   background-color: transparent;
   font-weight: 500;
 }
+.secondary:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 
 .large {
   padding: 13px 1.5rem 1rem 1.5rem;
@@ -41,23 +45,27 @@
   border: var(--border-dashed);
   border-radius: var(--border-radius-xs);
   color: var(--text-primary);
-  padding: 0.5rem 1rem;
-  font-size: var(--font-size-xs);
+  padding: 0.5rem 1.5rem;
+  font-size: var(--font-size-xxs);
   font-weight: 500;
   height: 35px;
   width: max-content;
 }
 
+.small:hover {
+  border-color: var(--border-color-dark);
+}
+
 .hasIcon {
   position: relative;
-  padding-right: 20px;
+  padding-right: 25px;
 }
 
 .hasIcon::after {
   content: '\279D';
   position: absolute;
   top: 50%;
-  right: 0px;
+  right: 6px;
   transform: translateY(-50%);
   transition: transform 0.3s ease;
 }
@@ -68,4 +76,9 @@
 
 .warning {
   color: var(--text-warning);
+}
+
+.warning:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

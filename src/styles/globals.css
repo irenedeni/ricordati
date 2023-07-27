@@ -11,7 +11,8 @@
   --font-size-l: 24px;
   --font-size-m: 20px;
   --font-size-s: 18px;
-  --font-size-xs: 14px;
+  --font-size-xs: 16px;
+  --font-size-xxs: 14px;
   --text-primary: rgba(22, 24, 23, 1);
   --text-grey: rgba(78, 63, 55, 0.5);
   --text-dark-grey: rgba(78, 63, 55, 1);
@@ -23,6 +24,7 @@
   --color-disabled: rgba(68, 35, 69, 0.3);
   --bg-notification: rgba(68, 35, 69, 1);
   --button-primary: rgba(67, 35, 69, 1);
+  --text-warning: rgba(255, 0, 0, 1);
 }
 
 * {
@@ -85,10 +87,6 @@ button {
   height: 48px;
 }
 
-button:hover {
-  text-decoration: underline;
-}
-
 input[type="text"]{
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -113,12 +111,28 @@ input[type="submit"] {
   background-color: var(--button-primary);
   color: var(--color-white);
   border-radius: var(--border-radius-m);
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border: none;
-  width: max-content;
+  width: 100%;
   cursor: pointer;
-  margin: 0 .5rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--color-primary);
+}
+
+input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  margin-left: 10px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 2px solid var(--color-primary);
 }
