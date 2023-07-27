@@ -161,8 +161,8 @@ export default function Form({
             <input
               type="file"
               id="image"
-              accept="image/*"
-              capture="user"
+              accept="image/*" 
+              capture
               onChange={handleImageChange}
             />
           </label>
