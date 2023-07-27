@@ -167,18 +167,19 @@ export default function Form({
             />
           </>
         )}
-
-        <input
-          disabled={!name || !person}
-          type="submit"
-          value={update ? 'Save changes' : 'Save item'}
-        />
-        <a onClick={() => Router.push('/')}>or Cancel</a>
+        <div className={styles.buttonsContainer}>
+          {update && item?.id && (
+            <Button action={() => deleteItem(item?.id)} text="Delete item" warning/>
+          )}
+          <input
+            disabled={!name || !person}
+            type="submit"
+            value={update ? 'Save changes' : 'Save item'}
+          />
+          <Button action={() => Router.push('/')} text="Cancel" secondary />
+        </div>
       </form>
-      {update && item?.id && (
-        <button onClick={() => deleteItem(item?.id)}>Delete item</button>
-      )}
-      <div className={styles.buttonContainer}>
+      <div className={styles.generateButtonContainer}>
         <div onClick={generateImage} className={styles.generateButton}>
           or generate one! 🔄
         </div>
