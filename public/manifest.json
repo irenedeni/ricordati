@@ -4,7 +4,9 @@
   "icons": [
     {
       "src": "/assets/logo.png",
-      "type": "image/png"
+      "type": "image/png",
+      "size": "292x67",
+      "purpose": "any"
     }
   ],
   "theme_color": "#F47F76",
