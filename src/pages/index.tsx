@@ -82,5 +82,8 @@ export const getServerSideProps: GetServerSideProps<TabItems> = async () => {
       lent: formattedLentItems,
       borrowed: formattedBorrowedItems,
     },
+    headers: {
+      'Cache-Control': 'no-store',
+    },
   }
 }
