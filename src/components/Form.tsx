@@ -162,7 +162,7 @@ export default function Form({
               type="file"
               id="image"
               accept="image/*" 
-              capture
+              capture={false}
               onChange={handleImageChange}
             />
           </label>
