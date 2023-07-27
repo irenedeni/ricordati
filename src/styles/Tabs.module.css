@@ -8,7 +8,7 @@
   background-color: var(--bg-grey);
   position: relative;
   max-width: 500px;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .toggle {
@@ -32,7 +32,6 @@
   color: var(--color-white);
 }
 
-
 .disabled {
   background-color: transparent;
   color: var(--color-disabled);
@@ -50,6 +49,10 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
+}
+
+.buttonLink {
+  width: 100%;
 }
 
 .tabContent {
@@ -71,10 +74,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: .2rem;
+  bottom: 0.2rem;
   right: -2rem;
   color: var(--color-white);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-xxs);
   width: 23px;
   height: 23px;
 }
@@ -82,7 +85,7 @@
 .activeElementsCount {
   background-color: var(--bg-notification);
 }
+
 .disabledElementsCount {
   background-color: var(--color-disabled);
 }
-

@@ -1,8 +1,7 @@
-import Image from 'next/image'
 import styles from '@/styles/ItemCard.module.css'
 import Button from './Button'
 import { capitalize } from '@/lib/functions'
-
+import Image from 'next/image'
 type Props = {
   id: string
   name: string
@@ -37,7 +36,10 @@ const ItemCard = ({
       <div className={styles.header}>
         <div className={styles.headerText}>
           <div className={styles.title}>{capitalize(name)}</div>
-          <div className={styles.subtitle}>{subtitle}{capitalize(person)}</div>
+          <div className={styles.subtitle}>
+            {subtitle}
+            {capitalize(person)}
+          </div>
         </div>
         {image ? (
           <Image
@@ -46,15 +48,29 @@ const ItemCard = ({
             width={80}
             height={80}
             className={styles.image}
+            quality={75}
+            priority={true}
           />
         ) : (
-          <div className={styles.imagePlaceholder}>Image Placeholder</div>
-        )
-      }
+          <Image
+            src="/assets/image-placeholder.png"
+            alt="Placeholder"
+            width={80}
+            height={80}
+            className={styles.image}
+            quality={75}
+          />
+        )}
       </div>
       <div className={styles.footer}>
         <div className={styles.date}>{formatDate(createdAt)}</div>
-        <Button text="Edit item" href={`/items/${id}`} secondary small hasIcon/>
+        <Button
+          text="Edit item"
+          href={`/items/${id}`}
+          secondary
+          small
+          hasIcon
+        />
       </div>
     </div>
   )

@@ -5,6 +5,7 @@ import TabToggle from './TabToggle'
 import Button from './Button'
 import ItemCard from './ItemCard'
 import TabContent from './TabContent'
+import Form from './Form'
 
 export { Layout }
 export { Navbar }
@@ -13,3 +14,4 @@ export { Button }
 export { ItemCard }
 export { TabToggle }
 export { TabContent }
+export { Form }

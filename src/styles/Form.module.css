@@ -1,0 +1,108 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formTitle {
+  margin: 0 auto 1.5rem auto;
+}
+
+.label {
+  font-size: var(--font-size-xxs);
+  font-weight: 500;
+  letter-spacing: -1%;
+  color: var(--text-primary);
+  margin: 0.5rem 0;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0 3rem 0;
+  position: relative;
+}
+
+.fileInput {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0.5rem 1rem;
+  border: var(--border-dashed);
+  border-radius: var(--border-radius-xs);
+  font-weight: 500;
+  font-size: var(--font-size-xxs);
+  color: var(--text-primary);
+  margin: 0 1rem;
+  height: 48px;
+}
+
+.fileInput:hover {
+  border-color: var(--border-color-dark);
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  max-width: 50%;
+  width: 100%;
+  margin: 5px;
+}
+
+.generateButtonContainer {
+  position: relative;
+}
+
+.generateButton {
+  padding: 0px;
+  border-bottom: var(--border-dashed);
+  font-weight: 500;
+  font-size: var(--font-size-xxs);
+}
+
+.generateButton:hover {
+  border-bottom: 1px dashed var(--border-color-dark);
+}
+
+.update {
+  margin-top: -220px;
+}
+
+.create {
+  margin-top: -162px;
+}
+
+.generateButton:hover {
+  cursor: pointer;
+}
+
+.previewImage {
+  border-radius: var(--border-radius-l);
+  object-fit: cover;
+  margin: 0 auto 1rem auto;
+}
+
+.ownership {
+  display: flex;
+  align-items: center;
+}

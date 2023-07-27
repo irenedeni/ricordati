@@ -1,63 +1,84 @@
 .fullwidth {
-    width: 100%;
-    background: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    text-align: center;
-    vertical-align: middle;
-    padding: .8rem;
-    border: var(--border-dashed);
-    border-radius: var(--border-radius-xs);
-    font-size: var(--font-size-s);
-    font-weight: 500;
-    color: var(--text-primary);
-    margin: 1.5rem auto .5rem auto;
-}
-.fullwidth:hover {
-    cursor: pointer;
-    border-color: var(--border-color-dark);
+  width: 100%;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.8rem;
+  border: var(--border-dashed);
+  border-radius: var(--border-radius-xs);
+  font-size: var(--font-size-s);
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 1.5rem auto 0.5rem auto;
 }
 
-.primary {
-    padding: 13px, 1.5rem, 1rem, 1.5rem;
-    background-color: var(--button-primary);
-    color: var(--color-white);
-    border-radius: var(--border-radius-m);
-    font-size: var(--font-size-s);
+.fullwidth:hover {
+  cursor: pointer;
+  border-color: var(--border-color-dark);
 }
 
 .secondary {
-    padding: 13px, 1.5rem, 1rem, 1.5rem;
-    background-color: transparent;
+  padding: 13px 1.5rem 1rem 1.5rem;
+  background-color: transparent;
+  font-weight: 500;
+}
+.secondary:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .large {
-    padding: 13px, 1.5rem, 1rem, 1.5rem;
-    font-size: var(--font-size-m);
+  padding: 13px 1.5rem 1rem 1.5rem;
+  font-size: var(--font-size-m);
 }
 
 .small {
-    padding: .5rem, 1rem;
-    font-size: var(--font-size-xs);
-    font-weight: 500;
-    text-transform: uppercase;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
+  vertical-align: middle;
+  border: var(--border-dashed);
+  border-radius: var(--border-radius-xs);
+  color: var(--text-primary);
+  padding: 0.5rem 1.5rem;
+  font-size: var(--font-size-xxs);
+  font-weight: 500;
+  height: 35px;
+  width: max-content;
+}
+
+.small:hover {
+  border-color: var(--border-color-dark);
 }
 
 .hasIcon {
-    position: relative;
-    padding-right: 20px;
+  position: relative;
+  padding-right: 25px;
 }
 
 .hasIcon::after {
-  content: "\279D"; 
+  content: '\279D';
   position: absolute;
   top: 50%;
-  right: 0px; 
+  right: 6px;
   transform: translateY(-50%);
   transition: transform 0.3s ease;
 }
 
 .hasIcon:hover::after {
-    transform: translateX(3px) translateY(-50%); 
-  }
+  transform: translateX(3px) translateY(-50%);
+}
+
+.warning {
+  color: var(--text-warning);
+}
+
+.warning:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
