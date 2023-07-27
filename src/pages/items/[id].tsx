@@ -1,9 +1,8 @@
-import { useState } from 'react'
-import Router from 'next/router'
 import { GetServerSideProps } from 'next'
-import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { getItem } from '../../lib/prisma'
 import { Layout, Form } from '@/components'
+import styles from '@/styles/Form.module.css'
 
 type Item = {
   item: {
@@ -16,11 +15,13 @@ type Item = {
 }
 
 export default function Update(item: Item): React.JSX.Element {
+  const router = useRouter()
+  const { itemsType } = router?.query
   return (
     <>
       <Layout>
-        <h1>Edit item</h1>
-        <Form update item={item.item} />
+        <h1 className={styles.formTitle}>Edit item</h1>
+        <Form update item={item.item} itemsType={itemsType as string}/>
       </Layout>
     </>
   )

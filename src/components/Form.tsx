@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import Router from 'next/router'
 import Image from 'next/image'
+import styles from '@/styles/Form.module.css'
+import Button from './Button'
 
 type Props = {
   update?: boolean
+  itemsType: string
   item?: {
     id: string
     name: string
@@ -13,10 +16,15 @@ type Props = {
   }
 }
 
-export default function Form({ update, item }: Props): React.JSX.Element {
+export default function Form({
+  update,
+  item,
+  itemsType,
+}: Props): React.JSX.Element {
+  const mine = itemsType === 'lent' ? true : false
   const [name, setName] = useState(item?.name ?? '')
   const [person, setPerson] = useState(item?.person ?? '')
-  const [ownedByMe, setOwnedByMe] = useState(item?.ownedByMe ?? false)
+  const [ownedByMe, setOwnedByMe] = useState(item?.ownedByMe ?? mine)
   const [selectedImage, setSelectedImage] = useState(
     item?.image ?? (null as any),
   )
@@ -71,6 +79,7 @@ export default function Form({ update, item }: Props): React.JSX.Element {
   }
 
   const generateImage = async () => {
+    console.log('name', name)
     if (name) {
       try {
         const response = await fetch(
@@ -85,7 +94,7 @@ export default function Form({ update, item }: Props): React.JSX.Element {
       } catch (error) {
         console.error('Error while fetching data from Unsplash:', error)
       }
-    }
+    } else return alert('Enter an item to generate an image')
   }
 
   const deleteItem = async (itemId: string): Promise<void> => {
@@ -96,54 +105,84 @@ export default function Form({ update, item }: Props): React.JSX.Element {
     Router.push('/')
   }
 
+  const nameLabel = mine ? "I'm lending out my..." : 'I am borrowing...'
+  const personLabel = mine ? 'To...' : 'From...'
+
   return (
-    <>
-      <form onSubmit={submitData}>
+    <div className={styles.formContainer}>
+      <form onSubmit={submitData} className={styles.form}>
+        <label htmlFor="name" className={styles.label}>
+          {nameLabel}
+        </label>
         <input
           autoFocus
           onChange={(e) => setName(e.target.value)}
-          placeholder="name"
           type="text"
           value={name}
         />
+        <label htmlFor="person" className={styles.label}>
+          {personLabel}
+        </label>
         <input
           autoFocus
           onChange={(e) => setPerson(e.target.value)}
-          placeholder="person"
           type="text"
           value={person}
         />
-        <label htmlFor="image">Upload Image:</label>
-        <input
-          type="file"
-          id="image"
-          accept="image/*"
-          capture={true} // Enables the camera on mobile devices
-          onChange={handleImageChange}
-        />
-        {selectedImage && (
-          <Image src={selectedImage} alt="Uploaded" width={80} height={80} />
+        <div className={styles.imageContainer}>
+          {selectedImage && (
+            <Image
+              src={selectedImage}
+              alt="Uploaded"
+              width={80}
+              height={80}
+              quality={75}
+              className={styles.previewImage}
+            />
+          )}
+          <label
+            htmlFor="image"
+            className={`${styles.label} ${styles.fileInput}`}
+          >
+            Upload image ⬆️
+            <input
+              type="file"
+              id="image"
+              accept="image/*"
+              capture={true} // Enables the camera on mobile devices
+              onChange={handleImageChange}
+            />
+          </label>
+        </div>
+
+        {update && (
+          <>
+            <label htmlFor="ownership" className={styles.label}>
+              Mine?:
+            </label>
+            <input
+              type="checkbox"
+              checked={ownedByMe}
+              onChange={() => setOwnedByMe(!ownedByMe)}
+            />
+          </>
         )}
-        <label htmlFor="ownership">Owned by me:</label>
-        <input
-          type="checkbox"
-          checked={ownedByMe}
-          onChange={() => setOwnedByMe(!ownedByMe)}
-        />
+
         <input
           disabled={!name || !person}
           type="submit"
-          value={update ? 'Edit' : 'Create'}
+          value={update ? 'Save changes' : 'Save item'}
         />
         <a onClick={() => Router.push('/')}>or Cancel</a>
       </form>
       {update && item?.id && (
         <button onClick={() => deleteItem(item?.id)}>Delete item</button>
       )}
-      <div>OR:</div>
-      <button onClick={generateImage} disabled={!name}>
-        Generate image
-      </button>
-    </>
+      <div className={styles.buttonContainer}>
+        <div onClick={generateImage} className={styles.generateButton}>
+          or generate one! 🔄
+        </div>
+      </div>
+    </div>
   )
 }

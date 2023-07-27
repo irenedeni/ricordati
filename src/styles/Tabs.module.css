@@ -51,6 +51,10 @@
   align-items: center;
 }
 
+.buttonLink {
+  width: 100%;
+}
+
 .tabContent {
   width: 100%;
   border-radius: var(--border-radius-m);

@@ -48,6 +48,8 @@ const ItemCard = ({
             width={80}
             height={80}
             className={styles.image}
+            quality={75}
+            priority={true}
           />
         ) : (
           <Image
@@ -56,6 +58,7 @@ const ItemCard = ({
             width={80}
             height={80}
             className={styles.image}
+            quality={75}
           />
         )}
       </div>

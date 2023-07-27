@@ -1,5 +1,6 @@
 import { ItemCard, Button } from '@/components'
 import styles from '@/styles/Tabs.module.css'
+import Link from 'next/link'
 
 type TabItem = {
   name: string
@@ -17,7 +18,9 @@ type TabsItems = {
 const TabContent = ({ items, itemsType }: TabsItems): React.JSX.Element => {
   return (
     <div className={styles.tabContentContainer}>
-      <Button text={`Add ${itemsType} item`} href="/create" fullwidth />
+      <Link href={`/create?itemsType=${encodeURIComponent(itemsType)}`} className={styles.buttonLink}>
+        <Button text={`Add ${itemsType} item`} fullwidth />
+      </Link>
       <div className={styles.tabContent}>
         {items.map((item: TabItem, i: number) => (
           <ItemCard
