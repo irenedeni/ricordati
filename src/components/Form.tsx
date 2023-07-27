@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
 import Image from 'next/image'
 import styles from '@/styles/Form.module.css'
 import Button from './Button'
@@ -28,7 +28,6 @@ export default function Form({
   const [selectedImage, setSelectedImage] = useState(
     item?.image ?? (null as any),
   )
-  const router = useRouter()
 
   const submitData = async (e: any) => {
     e.preventDefault()
@@ -61,7 +60,7 @@ export default function Form({
           body: JSON.stringify(body),
         })
 
-        await router.push('/', undefined, { shallow: false })
+        await Router.push('/')
       } catch (error) {
         console.error(error)
       }
@@ -102,7 +101,7 @@ export default function Form({
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     })
-    router.push('/', undefined, { shallow: false })
+    Router.push('/')
   }
 
   const nameLabel = mine ? "I'm lending out my..." : 'I am borrowing...'
@@ -185,7 +184,7 @@ export default function Form({
             className={styles.btn}
           />
           <Button
-            action={() => router.push('/', undefined, { shallow: false })}
+            action={() => Router.push('/')}
             text="Cancel"
             secondary
             className={styles.btn}
