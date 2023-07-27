@@ -162,7 +162,7 @@ export default function Form({
               type="file"
               id="image"
               accept="image/*"
-              capture={true} // Enables the camera on mobile devices
+              capture="user"
               onChange={handleImageChange}
             />
           </label>
