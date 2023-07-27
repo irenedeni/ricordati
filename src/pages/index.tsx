@@ -21,7 +21,7 @@ type TabItems = {
 
 export default function Home(props: TabItems) {
   const { data: session, status } = useSession()
-const { lent, borrowed } = props
+  const { lent, borrowed } = props
   const navProps = {
     button: {
       action: () => signOut(),
@@ -78,6 +78,6 @@ export const getServerSideProps: GetServerSideProps<TabItems> = async () => {
     props: {
       lent: formattedLentItems,
       borrowed: formattedBorrowedItems,
-    }  
+    },
   }
 }

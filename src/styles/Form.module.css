@@ -63,16 +63,16 @@
   width: 100%;
   left: 0;
 }
-.create  {
-    bottom: 143px;
+.create {
+  bottom: 143px;
 }
 
-.update  {
-    bottom: 200px;
+.update {
+  bottom: 200px;
 }
 
 .generateButton {
-margin-top: 5px;
+  margin-top: 5px;
   display: flex;
   align-items: center;
   justify-content: center;

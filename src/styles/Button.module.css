@@ -12,7 +12,7 @@
   font-size: var(--font-size-s);
   font-weight: 500;
   color: var(--text-primary);
-  margin: .3rem auto 0.3rem auto;
+  margin: 0.3rem auto 0.3rem auto;
 }
 
 .fullwidth:hover {

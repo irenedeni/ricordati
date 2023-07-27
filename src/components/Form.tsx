@@ -191,14 +191,13 @@ export default function Form({
           />
         </div>
       </form>
-      <div className={`${styles.generateButtonContainer} ${
-            update ? styles.update : styles.create
-          }`}>
+      <div
+        className={`${styles.generateButtonContainer} ${
+          update ? styles.update : styles.create
+        }`}
+      >
         or
-        <div
-          onClick={generateImage}
-          className={styles.generateButton}
-        >
+        <div onClick={generateImage} className={styles.generateButton}>
           Generate image 🔄
         </div>
       </div>

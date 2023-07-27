@@ -64,12 +64,7 @@ const ItemCard = ({
       </div>
       <div className={styles.footer}>
         <div className={styles.date}>{formatDate(createdAt)}</div>
-        <Button
-          text="Edit item"
-          href={`/items/${id}`}
-          fullwidth
-          hasIcon
-        />
+        <Button text="Edit item" href={`/items/${id}`} fullwidth hasIcon />
       </div>
     </div>
   )
