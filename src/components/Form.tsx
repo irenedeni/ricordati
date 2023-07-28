@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
 import Image from 'next/image'
 import styles from '@/styles/Form.module.css'
 import Button from './Button'
@@ -32,43 +32,42 @@ export default function Form({
 
   const submitData = async (e: any) => {
     e.preventDefault()
-    let resizedImage
-    try {
-      if (selectedImage && selectedImage.includes('data:image')) {
-        const response = await fetch('/api/image/compressImage', {
-          method: 'POST',
+    if (selectedImage) {
+      let resizedImage
+      try {
+        if (selectedImage && selectedImage.includes('data:image')) {
+          const response = await fetch('/api/image/compressImage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ imageData: selectedImage }),
+          })
+
+          const { resizedImageData } = await response.json()
+          resizedImage = resizedImageData
+        }
+
+        const image = resizedImage ? resizedImage : selectedImage ? selectedImage : null
+
+        const body = {
+          id: item?.id ?? null,
+          name,
+          person,
+          ownedByMe,
+          image: image,
+        }
+        const url = update ? `/api/item/update/${item?.id}` : '/api/item/create'
+
+        await fetch(url, {
+          method: update ? 'PUT' : 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ imageData: selectedImage }),
+          body: JSON.stringify(body),
         })
 
-        const { resizedImageData } = await response.json()
-        resizedImage = resizedImageData
+        await Router.push('/')
+      } catch (error) {
+        console.error(error)
       }
-
-      const image = resizedImage
-        ? resizedImage
-        : selectedImage
-        ? selectedImage
-        : null
-
-      const body = {
-        id: item?.id ?? null,
-        name,
-        person,
-        ownedByMe,
-        image: image,
-      }
-      const url = update ? `/api/item/update/${item?.id}` : '/api/item/create'
-
-      await fetch(url, {
-        method: update ? 'PUT' : 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      })
-    } catch (error) {
-      console.error(error)
     }
-    router.push('/', undefined, { shallow: false })
   }
 
   const handleImageChange = (e: any) => {
@@ -105,7 +104,7 @@ export default function Form({
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     })
-    router.push('/', undefined, { shallow: false })
+    await Router.push('/')
   }
 
   const nameLabel = mine ? "I'm lending out my..." : 'I am borrowing...'
@@ -165,7 +164,7 @@ export default function Form({
             <input
               type="file"
               id="image"
-              accept="image/*"
+              accept="image/*" 
               capture={false}
               onChange={handleImageChange}
             />
@@ -188,7 +187,7 @@ export default function Form({
             className={styles.btn}
           />
           <Button
-            action={() => router.push('/', undefined, { shallow: false })}
+            action={() => Router.push('/')}
             text="Cancel"
             secondary
             className={styles.btn}
