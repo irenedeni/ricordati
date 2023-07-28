@@ -28,8 +28,6 @@ export default function Form({
   const [selectedImage, setSelectedImage] = useState(
     item?.image ?? (null as any),
   )
-  const router = useRouter()
-
   const submitData = async (e: any) => {
     e.preventDefault()
     if (selectedImage) {
