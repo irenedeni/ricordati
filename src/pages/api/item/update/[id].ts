@@ -11,5 +11,5 @@ export default async function handle(
     where: { id: id },
     data: req.body,
   })
-  res.json(result)
+  res.status(200).json(result)
 }
