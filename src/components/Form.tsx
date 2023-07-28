@@ -32,39 +32,43 @@ export default function Form({
 
   const submitData = async (e: any) => {
     e.preventDefault()
-    if (selectedImage) {
-      let resizedImage
-      try {
-        if (selectedImage.includes('data:image')) {
-          const response = await fetch('/api/image/compressImage', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ imageData: selectedImage }),
-          })
-
-          const { resizedImageData } = await response.json()
-          resizedImage = resizedImageData
-        }
-
-        const body = {
-          id: item?.id ?? null,
-          name,
-          person,
-          ownedByMe,
-          image: resizedImage ?? selectedImage,
-        }
-        const url = update ? `/api/item/update/${item?.id}` : '/api/item/create'
-
-        await fetch(url, {
-          method: update ? 'PUT' : 'POST',
+    let resizedImage
+    try {
+      if (selectedImage && selectedImage.includes('data:image')) {
+        const response = await fetch('/api/image/compressImage', {
+          method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body),
+          body: JSON.stringify({ imageData: selectedImage }),
         })
 
-        await router.push('/', undefined, { shallow: false })
-      } catch (error) {
-        console.error(error)
+        const { resizedImageData } = await response.json()
+        resizedImage = resizedImageData
       }
+
+      const image = resizedImage
+        ? resizedImage
+        : selectedImage
+        ? selectedImage
+        : null
+
+      const body = {
+        id: item?.id ?? null,
+        name,
+        person,
+        ownedByMe,
+        image: image,
+      }
+      const url = update ? `/api/item/update/${item?.id}` : '/api/item/create'
+
+      await fetch(url, {
+        method: update ? 'PUT' : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+
+      router.push('/', undefined, { shallow: false })
+    } catch (error) {
+      console.error(error)
     }
   }
 
@@ -162,7 +166,7 @@ export default function Form({
             <input
               type="file"
               id="image"
-              accept="image/*" 
+              accept="image/*"
               capture={false}
               onChange={handleImageChange}
             />
