@@ -11,5 +11,6 @@ export default async function handle(
     where: { id: id },
     data: req.body,
   })
+  res.setHeader('X-Reload-Page', 'true')
   res.status(200).json(result)
 }
