@@ -65,11 +65,10 @@ export default function Form({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-
-      router.push('/', undefined, { shallow: false })
     } catch (error) {
       console.error(error)
     }
+    router.push('/', undefined, { shallow: false })
   }
 
   const handleImageChange = (e: any) => {
