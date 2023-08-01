@@ -6,6 +6,7 @@ import Button from './Button'
 import ItemCard from './ItemCard'
 import TabContent from './TabContent'
 import Form from './Form'
+import Divider from './Divider'
 
 export { Layout }
 export { Navbar }
@@ -15,3 +16,4 @@ export { ItemCard }
 export { TabToggle }
 export { TabContent }
 export { Form }
+export { Divider }

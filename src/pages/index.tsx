@@ -2,7 +2,7 @@ import { signOut, useSession } from 'next-auth/react'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Layout, Tabs } from '@/components/index'
+import { Layout, Tabs, Button, Divider } from '@/components/index'
 import { getItems } from '../lib/prisma'
 
 type Item = {
@@ -46,7 +46,10 @@ export default function Home(props: TabItems) {
         {status === 'loading' ? (
           <div>Loading...</div>
         ) : status === 'unauthenticated' ? (
-          <Link href="/api/auth/signin">Log in</Link>
+          <>
+            <Divider />
+            <Button href="/api/auth/signin" text="Log in" primary fullwidth/>
+          </>
         ) : null}
         {session &&
           status === 'authenticated' &&
