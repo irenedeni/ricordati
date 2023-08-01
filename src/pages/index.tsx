@@ -39,7 +39,7 @@ export default function Home(props: TabItems) {
         />
         <meta
           name="viewport"
-          content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
       </Head>
       <Layout button={status === 'authenticated' ? navProps.button : undefined}>
@@ -48,7 +48,7 @@ export default function Home(props: TabItems) {
         ) : status === 'unauthenticated' ? (
           <>
             <Divider />
-            <Button href="/api/auth/signin" text="Log in" primary fullwidth/>
+            <Button href="/api/auth/signin" text="Log in" primary fullwidth />
           </>
         ) : null}
         {session &&
@@ -84,6 +84,6 @@ export const getServerSideProps: GetServerSideProps<TabItems> = async () => {
     props: {
       lent: formattedLentItems,
       borrowed: formattedBorrowedItems,
-    }
+    },
   }
 }

@@ -44,7 +44,11 @@ export default function Form({
           resizedImage = resizedImageData
         }
 
-        const image = resizedImage ? resizedImage : selectedImage ? selectedImage : null
+        const image = resizedImage
+          ? resizedImage
+          : selectedImage
+          ? selectedImage
+          : null
 
         const body = {
           id: item?.id ?? null,
@@ -162,7 +166,7 @@ export default function Form({
             <input
               type="file"
               id="image"
-              accept="image/*" 
+              accept="image/*"
               capture={false}
               onChange={handleImageChange}
             />
