@@ -42,7 +42,7 @@ export default function Home(props: TabItems) {
           content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
         />
       </Head>
-      <Layout button={navProps.button}>
+      <Layout button={status === 'authenticated' ? navProps.button : undefined}>
         {status === 'loading' ? (
           <div>Loading...</div>
         ) : status === 'unauthenticated' ? (
